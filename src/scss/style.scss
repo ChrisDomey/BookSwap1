@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,700');
+
+// Global
+@import './global/_variables';
+@import './global/util'
+
+// Partials
+@import './partials/header';
+@import './partials/footer';
+
+// Pages
+@import './pages/index';
+
+body {
+    margin: 0;
+    font-size: 14px;
+    font-family: $lato;
+    color: #333;
+}
+
+a {
+    color: #00b7ff;
+    text-decoration: none;
+}
