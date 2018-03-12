@@ -5,7 +5,7 @@ const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const config = require('./config/app')
-
+const expressValidator = require('express-validator')
 const exphbs = require('express-handlebars')
 
 if (config.useEnv) require('dotenv-safe').load() // Must load as early as possible
@@ -38,6 +38,7 @@ app.set('view engine', '.hbs')
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(expressValidator())
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
