@@ -2,7 +2,7 @@
 
 // Global
 @import './global/_variables';
-@import './global/util'
+@import './global/util';
 
 // Partials
 @import './partials/header';
@@ -10,7 +10,6 @@
 
 // Pages
 @import './pages/index';
-
 body {
     margin: 0;
     font-size: 14px;
