@@ -9,6 +9,5 @@ router.get('/', async (req, res) => {
 
     res.render('index', { title: 'Voyager' })
 })
-router.get()
 
 module.exports = router
