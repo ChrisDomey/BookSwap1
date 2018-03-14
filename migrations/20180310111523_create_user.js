@@ -1,7 +1,8 @@
 
 exports.up = function(knex, Promise) {
     return knex.schema.createTable('user', function(t) {
-        t.string('userID').primary();
+        t.string('username').primary();
+        t.unique('username');
         t.string('firstName').notNull();
         t.string('lastName').notNull();
         t.binary('password').notNull();
