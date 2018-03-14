@@ -1,0 +1,70 @@
+<div class="container">
+    <h1>{{title}}</h1>
+    {{#if errors}} {{#each errors}}
+    <div class="alert alert-danger" role="alert">
+        {{this.msg}}
+    </div>
+    {{/each}} {{/if}}
+    <form method="POST" action="register">
+        <div class="form-group">
+            <label for="inputUsername">Username</label>
+            <input type="text" class="form-control" required name="username" placeholder="username">
+        </div>
+        <div class="form-group">
+            <label for="inputFirstName">First Name</label>
+            <input type="text" class="form-control" required name="firstName" placeholder="John">
+        </div>
+        <div class="form-group">
+            <label for="inputLastName">Last Name</label>
+            <input type="text" class="form-control" required name="lastName" placeholder="Doe">
+        </div>
+        <div class="form-group">
+            <label for="inputEmail1">Email address</label>
+            <input type="email" class="form-control" required name="email" placeholder="name@domain.com">
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select class="form-control" id="gender" required name="gender">
+                <option value="">None</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="inputUsername">Date of Birth</label>
+            <input type="date" class="form-control" required name="dOB" placeholder="mm/dd/yyyy">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control" required name="streetAddress" id="inputAddress" placeholder="1234 Main St">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" required name="city" id="city" placeholder="City">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <input type="text" class="form-control" required name="state" id="state" placeholder="State">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="inputZip">Zip</label>
+                <input type="text" class="form-control" required name="zip" id="zip" placeholder="Zip">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" class="form-control" required name="phone" id="phone" placeholder="+1 234 567 8900">
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" required name="password1" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="inputConfirmPassword">Confirm Password</label>
+            <input type="password" class="form-control" required name="password2" placeholder="Re-enter Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
