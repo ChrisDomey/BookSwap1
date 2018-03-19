@@ -47,17 +47,38 @@ router.post('/register', function (req, res) {
         const phone = req.body.phone;
         const plainTextPassword = req.body.password1;
 
-        bcrypt.hash(plainTextPassword, saltRounds, function(err, hash) {
+        bcrypt.hash(plainTextPassword, saltRounds, function (err, hash) {
             User.create({
                 username: username, firstName: firstName, lastName: lastName
                 , email: email, gender: gender, dOB: dOB, streetAddress: streetAddress
                 , city: city, state: state, zip: zip, phone: phone
                 , password: hash
-            }).then(user=>{console.log(`Registered successfully ${user.username}`), res.render('register',{title:"Successful"})})
-            .catch(error=>{console.log("Failed "+error),res.render('register',{title:"Registration",dbError:"Username already Exists"}) })
-          });
+            }).then(user => { console.log(`Registered successfully ${user.username}`), res.render('register', { title: "Successful" }) })
+                .catch(error => { console.log("Failed " + error), res.render('register', { title: "Registration", dbError: "Username already Exists" }) })
+        });
 
     }
+})
+
+router.get('/login', function (req, res) {
+    res.render('login', { title: 'Login' })
+})
+
+router.post('/login', function (req, res) {
+    User.forge({ username: req.body.username }).fetch()
+        .then(user => {
+            user.verifyPassword(req.body.password, function (result) {
+                if (result) {
+                    res.render('login', { title: 'Successful' })
+                }
+                else {
+                    res.render('login', { title: 'Login', error: 'Username and password combination does not match' })
+                }
+            })
+        })
+        .catch(error => { res.render('login', { title: 'Login', error: 'User not found' }) })
+
+
 })
 
 module.exports = router
