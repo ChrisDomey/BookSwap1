@@ -5,6 +5,11 @@
         {{this.msg}}
     </div>
     {{/each}} {{/if}}
+    {{#if dbError}}
+    <div class="alert alert-danger" role="alert">
+        {{dbError}}
+    </div>
+    {{/if}}
     <form method="POST" action="register">
         <div class="form-group">
             <label for="inputUsername">Username</label>
@@ -65,6 +70,6 @@
             <label for="inputConfirmPassword">Confirm Password</label>
             <input type="password" class="form-control" required name="password2" placeholder="Re-enter Password">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="Sign up" class="btn btn-primary">Submit</button>
     </form>
 </div>
