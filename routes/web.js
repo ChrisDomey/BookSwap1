@@ -1,7 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const expressValidator = require('express-validator')
-const user = require('../models/User')
+const User = require('../models/User')
+const bcrypt = require('bcrypt')
+const saltRounds = 10;
 
 /* GET home page. */
 router.get('/', async (req, res) => {
@@ -43,18 +45,17 @@ router.post('/register', function (req, res) {
         const state = req.body.state;
         const zip = req.body.zip;
         const phone = req.body.phone;
-        const password = req.body.password1;
-        console.log("Variables set");
+        const plainTextPassword = req.body.password1;
 
-        new user({
-            username: username, firstName: firstName, lastName: lastName
-            , email: email, gender: gender, dOB: dOB, streetAddress: streetAddress
-            , city: city, state: state, zip: zip, phone: phone
-            , password: password
-        }, function (error) { console.log(JSON.stringify(error)) }).save()
-            .then(function () { res.render('/register', { title: "Successful" }) })
-            .catch(error => res.render('/register').send(error.message));
-
+        bcrypt.hash(plainTextPassword, saltRounds, function(err, hash) {
+            User.create({
+                username: username, firstName: firstName, lastName: lastName
+                , email: email, gender: gender, dOB: dOB, streetAddress: streetAddress
+                , city: city, state: state, zip: zip, phone: phone
+                , password: hash
+            }).then(user=>{console.log(`Registered successfully ${user.username}`), res.render('register',{title:"Successful"})})
+            .catch(error=>{console.log("Failed "+error),res.render('register',{title:"Registration",dbError:"Username already Exists"}) })
+          });
 
     }
 })
