@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
         t.unique('username');
         t.string('firstName').notNull();
         t.string('lastName').notNull();
-        t.binary('password').notNull();
+        t.string('password').notNull();
         t.string('email').notNull();
         t.enum('gender',['male','female','NA']);
         t.date('dOB').notNull();
