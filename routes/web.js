@@ -45,13 +45,16 @@ router.post('/register', function (req, res) {
 
         new User({ 'username': username }).fetch().then(user => { console.log(user.get('username')), res.render('register', { title: "Registration", dbError: "Username already Exists" }) })
             .catch(err => {
-                bcrypt.hash(plainTextPassword, saltRounds, function (err, hash) {
-                    User.create({
-                        username: username, firstName: firstName, lastName: lastName
-                        , email: email, password: hash
-                    }).then(user => { console.log(`Registered successfully ${user.get('username')}`), res.render('register', { title: "Successful" }) })
-                        .catch(error => { console.log("Failed " + error), res.render('register', { title: "Registration", dbError: "Database Error" }) })
-                })
+                new User({ 'email': email }).fetch().then(user => { console.log(user.get('email')), res.render('register', { title: "Registration", dbError: "email already registered" }) })
+                    .catch(erro => {
+                        bcrypt.hash(plainTextPassword, saltRounds, function (err, hash) {
+                            User.create({
+                                username: username, firstName: firstName, lastName: lastName
+                                , email: email, password: hash
+                            }).then(user => { console.log(`Registered successfully ${user.get('username')}`), res.render('register', { title: "Successful" }) })
+                                .catch(error => { console.log("Failed " + error), res.render('register', { title: "Registration", dbError: "Database Error" }) })
+                        })
+                    })
             })
     }
 })
