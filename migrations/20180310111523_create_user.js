@@ -7,13 +7,6 @@ exports.up = function(knex, Promise) {
         t.string('lastName').notNull();
         t.string('password').notNull();
         t.string('email').notNull();
-        t.enum('gender',['male','female','NA']);
-        t.date('dOB').notNull();
-        t.string('streetAddress').notNull();
-        t.string('city').notNull();
-        t.string('state').notNull();
-        t.string('zip').notNull();
-        t.string('phone').notNull();
     });
 };
 

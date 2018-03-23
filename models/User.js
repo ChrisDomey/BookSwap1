@@ -7,7 +7,6 @@ const User = bookshelf.Model.extend({
         bcrypt.compare(password, this.get('password'), function (err, result) {
             fn(result)
         })
-
     }
 },
     {
