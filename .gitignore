@@ -32,3 +32,7 @@ yarn-error.log
 
 .env
 *.todo
+
+package-lock.json
+
+.DS_Store
