@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const expressValidator = require('express-validator')
 const User = require('../models/User')
+const UserBook = require('../models/UserBook')
 const bcrypt = require('bcrypt')
 const saltRounds = 10;
 
@@ -51,7 +52,7 @@ router.post('/register', function (req, res) {
                             User.create({
                                 username: username, firstName: firstName, lastName: lastName
                                 , email: email, password: hash
-                            }).then(user => { console.log(`Registered successfully ${user.get('username')}`), res.render('register', { title: "Successful" }) })
+                            }).then(user => { console.log(`Registered successfully ${user.get('username')}`), res.render('index', { title: "Successful" }) })
                                 .catch(error => { console.log("Failed " + error), res.render('register', { title: "Registration", dbError: "Database Error" }) })
                         })
                     })
@@ -79,5 +80,15 @@ router.post('/login', function (req, res) {
 
 
 })
+
+router.get('/mybooks',function(req,res){
+    
+    res.render('mybooks',{title:"mybooks"})
+})
+
+router.get('/mywishlist', function(req,res){
+    res.render('mywishlist',{title:"mywishlist"})
+})
+
 
 module.exports = router
