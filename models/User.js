@@ -1,4 +1,5 @@
 const bookshelf = require('../config/bookshelf')
+const UserBook = require('../models/UserBook')
 const bcrypt = require('bcrypt');
 
 const User = bookshelf.Model.extend({
@@ -9,7 +10,7 @@ const User = bookshelf.Model.extend({
         })
     },
     myBooks: function () {
-        return this.hasMany('UserBook', 'username')
+        return this.hasMany(UserBook, 'username','username')
     },
     myWishlist: function () {
         return this.hasMany('UserWishlist', 'username')
@@ -23,6 +24,5 @@ const User = bookshelf.Model.extend({
             return this.forge().query({where:{ email : email }}).fetch();           
         }
     })
-
-
+    
 module.exports = User
