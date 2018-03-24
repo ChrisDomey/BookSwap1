@@ -98,5 +98,20 @@ a {
     border: 1px solid #fff;
 
     background: #1D4A8D !important;
-
 }
+
+.register-bookswap-label {
+	color: #fff;
+}
+
+::placeholder {
+    color: #fff;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #fff;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+   color: #fff;
