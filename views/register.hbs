@@ -1,43 +1,56 @@
-<div class="container">
-    <h1>{{title}}</h1>
-    {{#if errors}} {{#each errors}}
-    <div class="alert alert-danger" role="alert">
-        {{this.msg}}
+<div class="bookswap-body">
+    <div class="register-bookswap-icon">
+        <img src="img/Bookswap_Vert_KO.jpg" alt="Icon" style="width: 300px">
     </div>
-    {{/each}} {{/if}} {{#if dbError}}
-    <div class="alert alert-danger" role="alert">
-        {{dbError}}
+    <div class="form-container">
+        <h1 class="title">{{title}}</h1>
+        {{#if errors}} {{#each errors}}
+        <div class="alert alert-danger" role="alert">
+            {{this.msg}}
+        </div>
+        {{/each}} {{/if}} {{#if dbError}}
+        <div class="alert alert-danger" role="alert">
+            {{dbError}}
+        </div>
+        {{/if}}
+        <div class="form-container">
+            <form method="POST" action="register">
+                <div class="form-group">
+                    <label for="inputUsername">Username</label>
+                    <input type="text" class="register-bookswap-textField" required name="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col">
+                            <label for="inputFirstName">First Name</label>
+                            <input type="text" class="form-control" required name="firstName" placeholder="John">
+                        </div>
+                        
+                        <!-- <div class="col">
+                            <label>Last Name</label>
+                            <input type="text" class="" placeholder="Doe" name="">
+                        </div> -->
+                        <div class="col">
+                            <label for="inputLastName">Last Name</label>
+                            <input type="text" class="form-control" required name="lastName" placeholder="Doe">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail1">Email address</label>
+                    <input type="email" class="form-control" required name="email" placeholder="name@domain.com">
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" class="form-control" required name="password1" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="inputConfirmPassword">Confirm Password</label>
+                    <input type="password" class="form-control" required name="password2" placeholder="Re-enter Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Sign up</button>
+            </form>
+        </div>
     </div>
-    {{/if}}
-    <form method="POST" action="register">
-        <div class="form-group">
-            <label for="inputUsername">Username</label>
-            <input type="text" class="form-control" required name="username" placeholder="username">
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col">
-                    <label for="inputFirstName">First Name</label>
-                    <input type="text" class="form-control" required name="firstName" placeholder="John">
-                </div>
-                <div class="col">
-                    <label for="inputLastName">Last Name</label>
-                    <input type="text" class="form-control" required name="lastName" placeholder="Doe">
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="inputEmail1">Email address</label>
-            <input type="email" class="form-control" required name="email" placeholder="name@domain.com">
-        </div>
-        <div class="form-group">
-            <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" required name="password1" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <label for="inputConfirmPassword">Confirm Password</label>
-            <input type="password" class="form-control" required name="password2" placeholder="Re-enter Password">
-        </div>
-        <button type="submit" class="btn btn-primary">Sign up</button>
-    </form>
 </div>

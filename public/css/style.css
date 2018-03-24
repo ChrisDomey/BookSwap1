@@ -56,8 +56,47 @@ body {
   margin: 0;
   font-size: 14px;
   font-family: "Lato", sans-serif;
-  color: #333; }
+  color: #333; 
+}
 
 a {
   color: #00b7ff;
   text-decoration: none; }
+
+
+.bookswap-body {
+  background-color: #1D4A8D;
+}
+
+.title {
+  font-size: 28px; font-weight: 300;
+  color: white;
+  text-align: center;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: auto;
+}
+
+.register-bookswap-icon {
+  margin: auto;
+  width: 300px;
+}
+
+.register-bookswap-textField {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border: 1px solid #fff;
+
+    background: #1D4A8D !important;
+
+}

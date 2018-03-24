@@ -5,6 +5,8 @@ const User = require('../models/User')
 const bcrypt = require('bcrypt')
 const saltRounds = 10;
 
+const path = require('path')
+
 /* GET home page. */
 router.get('/', async (req, res) => {
     // const user = await User.where('id', 1).fetch()
@@ -14,7 +16,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/register', function (req, res) {
-    res.render('register', { title: 'Registration' })
+    res.render('register', { title: 'Welcome to BookSwap' })
 })
 
 function validate(req) {
@@ -78,6 +80,10 @@ router.post('/login', function (req, res) {
         .catch(error => { res.render('login', { title: 'Login', error: 'User not found' }) })
 
 
+})
+
+router.get('/public',function(req,res){
+    res.render('image',{ imgsrc : path.join(__dirname, '../public/img', 'Bookswap_Vert_KO.jpg')});
 })
 
 module.exports = router
