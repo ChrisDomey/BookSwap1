@@ -8,6 +8,8 @@ exports.up = function(knex, Promise) {
         t.string('password').notNull();
         t.string('email').notNull();
         t.unique('email');
+        t.string('universityID');
+        t.foreign('universityID').references('university.universityID');
     });
 };
 
