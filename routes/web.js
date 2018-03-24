@@ -3,6 +3,7 @@ const router = express.Router()
 const expressValidator = require('express-validator')
 const User = require('../models/User')
 const UserBook = require('../models/UserBook')
+const University = require('../models/University')
 const bcrypt = require('bcrypt')
 const saltRounds = 10;
 
@@ -17,6 +18,17 @@ router.get('/', async (req, res) => {
 router.get('/register', function (req, res) {
     res.render('register', { title: 'Registration' })
 })
+
+function renderLogin(user,password,res) {
+    user.verifyPassword(password, function (result) {
+        if (result) {
+            res.render('login', { title: 'Successful' })
+        }
+        else {
+            res.render('login', { title: 'Login', error: 'Username and password combination does not match' })
+        }
+    })
+}
 
 function validate(req) {
     req.checkBody('username', 'Username field cannot be empty.').notEmpty();
@@ -43,20 +55,23 @@ router.post('/register', function (req, res) {
         const lastName = req.body.lastName;
         const email = req.body.email;
         const plainTextPassword = req.body.password1;
-
-        new User({ 'username': username }).fetch().then(user => { console.log(user.get('username')), res.render('register', { title: "Registration", dbError: "Username already Exists" }) })
-            .catch(err => {
-                new User({ 'email': email }).fetch().then(user => { console.log(user.get('email')), res.render('register', { title: "Registration", dbError: "email already registered" }) })
-                    .catch(erro => {
-                        bcrypt.hash(plainTextPassword, saltRounds, function (err, hash) {
-                            User.create({
-                                username: username, firstName: firstName, lastName: lastName
-                                , email: email, password: hash
-                            }).then(user => { console.log(`Registered successfully ${user.get('username')}`), res.render('index', { title: "Successful" }) })
-                                .catch(error => { console.log("Failed " + error), res.render('register', { title: "Registration", dbError: "Database Error" }) })
+        const emailDomain = email.split("@")[1]
+        University.byEmailDomain(emailDomain).then(university => {
+            const universityID = university.get('universityID')
+            new User({ 'username': username }).fetch().then(user => { console.log(user.get('username')), res.render('register', { title: "Registration", dbError: "Username already Exists" }) })
+                .catch(err => {
+                    new User({ 'email': email }).fetch().then(user => { console.log(user.get('email')), res.render('register', { title: "Registration", dbError: "email already registered" }) })
+                        .catch(erro => {
+                            bcrypt.hash(plainTextPassword, saltRounds, function (err, hash) {
+                                User.create({
+                                    username: username, firstName: firstName, lastName: lastName
+                                    , email: email, password: hash, universityID: universityID
+                                }).then(user => { console.log(`Registered successfully ${user.get('username')}`), res.render('index', { title: "Successful" }) })
+                                    .catch(error => { console.log("Failed " + error), res.render('register', { title: "Registration", dbError: "Database Error" }) })
+                            })
                         })
-                    })
-            })
+                })
+        })
     }
 })
 
@@ -65,29 +80,27 @@ router.get('/login', function (req, res) {
 })
 
 router.post('/login', function (req, res) {
-    User.forge({ username: req.body.username }).fetch()
-        .then(user => {
-            user.verifyPassword(req.body.password, function (result) {
-                if (result) {
-                    res.render('login', { title: 'Successful' })
-                }
-                else {
-                    res.render('login', { title: 'Login', error: 'Username and password combination does not match' })
-                }
-            })
-        })
-        .catch(error => { res.render('login', { title: 'Login', error: 'User not found' }) })
-
-
+    req.checkBody('username').isEmail();
+    if (req.validationErrors()) {
+        User.forge({ username: req.body.username }).fetch()
+            .then(user => {
+                renderLogin(user,req.body.password, res)
+            }).catch(error => { res.render('login', { title: 'Login', error: 'User not found' }) })
+    }
+    else {
+        User.byEmail(req.body.username).then(user => {
+            renderLogin(user,req.body.password, res)
+        }).catch(error => { res.render('login', { title: 'Login', error: 'User not found' }) })
+    }
 })
 
-router.get('/mybooks',function(req,res){
-    
-    res.render('mybooks',{title:"mybooks"})
+router.get('/mybooks', function (req, res) {
+
+    res.render('mybooks', { title: "mybooks" })
 })
 
-router.get('/mywishlist', function(req,res){
-    res.render('mywishlist',{title:"mywishlist"})
+router.get('/mywishlist', function (req, res) {
+    res.render('mywishlist', { title: "mywishlist" })
 })
 
 
