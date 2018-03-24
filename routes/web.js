@@ -19,7 +19,7 @@ router.get('/register', function (req, res) {
     res.render('register', { title: 'Registration' })
 })
 
-function renderLogin(user,password,res) {
+function renderLogin(user, password, res) {
     user.verifyPassword(password, function (result) {
         if (result) {
             res.render('login', { title: 'Successful' })
@@ -71,7 +71,7 @@ router.post('/register', function (req, res) {
                             })
                         })
                 })
-        })
+        }).catch(error => { console.log("Failed " + error), res.render('register', { title: "Registration", dbError: "Your university is not licensed with us" }) })
     }
 })
 
@@ -84,19 +84,22 @@ router.post('/login', function (req, res) {
     if (req.validationErrors()) {
         User.forge({ username: req.body.username }).fetch()
             .then(user => {
-                renderLogin(user,req.body.password, res)
+                renderLogin(user, req.body.password, res)
             }).catch(error => { res.render('login', { title: 'Login', error: 'User not found' }) })
     }
     else {
-        User.byEmail(req.body.username).then(user => {
-            renderLogin(user,req.body.password, res)
-        }).catch(error => { res.render('login', { title: 'Login', error: 'User not found' }) })
+        User.byEmail(req.body.username)
+            .then(user => {
+                renderLogin(user, req.body.password, res)
+            }).catch(error => { res.render('login', { title: 'Login', error: 'User not found' }) })
     }
 })
 
 router.get('/mybooks', function (req, res) {
-
-    res.render('mybooks', { title: "mybooks" })
+    User.forge({username: 'krishna'}).fetch({withRelated: ['myBooks']})  
+    .then(user=>{
+            res.render('mybooks', { title: user.related('myBooks').toJSON()})
+    })
 })
 
 router.get('/mywishlist', function (req, res) {
