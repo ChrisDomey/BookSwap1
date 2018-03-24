@@ -12,7 +12,11 @@ if (config.useEnv) require('dotenv-safe').load() // Must load as early as possib
 
 const routes = require('./routes/web')
 
+const session = require("express-session");
+
 const app = express()
+//Authentication Packages
+
 
 // view engine setup
 const hbs = exphbs.create({
@@ -40,6 +44,15 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(expressValidator())
 app.use(cookieParser())
+
+app.use(session({
+    //generate random string
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    //cookie: { secure: true }
+}))
+
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', routes)
