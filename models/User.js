@@ -19,6 +19,9 @@ const User = bookshelf.Model.extend({
         create: function (data) {
             return this.forge(data).save()
         },
+        byEmail: function(email){
+            return this.forge().query({where:{ email : email }}).fetch();           
+        }
     })
 
 
