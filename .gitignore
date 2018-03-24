@@ -32,9 +32,3 @@ yarn-error.log
 
 .env
 *.todo
-
-#packagelock
-package-lock.json
-
-#bundle
-public/js/global.bundle.js
