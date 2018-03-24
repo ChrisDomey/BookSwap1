@@ -7,10 +7,6 @@ exports.up = function(knex, Promise) {
         t.string('ISBN').notNull();
         t.foreign('ISBN').references('book.ISBN');
         t.date('dateUploaded').notNull();
-        t.string('streetAddress').notNull();
-        t.string('city').notNull();
-        t.string('state').notNull();
-        t.string('zip').notNull();
         t.string('condition').notNull();
         t.string('pictures').notNull();
         t.date('availableDate').notNull();

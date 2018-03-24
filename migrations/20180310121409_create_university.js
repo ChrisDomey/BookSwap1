@@ -13,6 +13,7 @@ exports.up = function(knex, Promise) {
         t.string('phone').notNull();
         t.string('ISBN').notNull();
         t.foreign('ISBN').references('book.ISBN');
+        t.string('emailDomain').notNull();
     });
 };
 
