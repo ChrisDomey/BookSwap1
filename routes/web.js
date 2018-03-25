@@ -6,6 +6,8 @@ const UserBook = require('../models/UserBook')
 const University = require('../models/University')
 const bcrypt = require('bcrypt')
 const saltRounds = 10;
+const passport = require('passport');
+
 
 const path = require('path')
 
@@ -68,7 +70,7 @@ router.post('/register', function (req, res) {
                                 User.create({
                                     username: username, firstName: firstName, lastName: lastName
                                     , email: email, password: hash, universityID: universityID
-                                }).then(user => { console.log(`Registered successfully ${user.get('username')}`), res.render('index', { title: "Successful" }) })
+                                }).then(user => { req.login(user, err => { res.redirect('/') }) })
                                     .catch(error => { console.log("Failed " + error), res.render('register', { title: "Registration", dbError: "Database Error" }) })
                             })
                         })
@@ -76,6 +78,14 @@ router.post('/register', function (req, res) {
         }).catch(error => { console.log("Failed " + error), res.render('register', { title: "Registration", dbError: "Your university is not licensed with us" }) })
     }
 })
+
+passport.serializeUser(function (user, done) {
+    done(null, user.get('username'));
+});
+
+passport.deserializeUser(function (id, done) {
+    done(null, user.get('username'));
+});
 
 router.get('/login', function (req, res) {
     res.render('login', { title: 'Login' })
@@ -98,14 +108,16 @@ router.post('/login', function (req, res) {
 })
 
 router.get('/mybooks', function (req, res) {
-    User.forge({username: 'krishna'}).fetch({withRelated: ['myBooks']})  
-    .then(user=>{
-            res.render('mybooks', { title: user.related('myBooks').toJSON()})
-    })
+    User.forge({ username: 'krishna' }).fetch({ withRelated: ['myBooks'] })
+        .then(user => {
+            res.render('mybooks', { title: user.related('myBooks').toJSON() })
+        })
 })
 
 router.get('/mywishlist', function (req, res) {
     res.render('mywishlist', { title: "mywishlist" })
 })
+
+
 
 module.exports = router
