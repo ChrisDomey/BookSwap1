@@ -48,7 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(session({
     //generate random string
-    secret: 'keyboard cat',
+    secret: 'christopherdomey',
     resave: false,
     saveUninitialized: false,
     //cookie: { secure: true }
