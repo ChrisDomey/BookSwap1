@@ -7,6 +7,9 @@ const bodyParser = require('body-parser')
 const config = require('./config/app')
 const expressValidator = require('express-validator')
 const exphbs = require('express-handlebars')
+const knexfile = require('./knexfile')
+const knex = require('knex')(knexfile)
+const User = require('./models/User')
 
 if (config.useEnv) require('dotenv-safe').load() // Must load as early as possible
 
@@ -15,8 +18,12 @@ const routes = require('./routes/web')
 //Authentication Packages
 const session = require("express-session");
 const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 const app = express()
+const KnexSessionStore = require('connect-session-knex')(session);
+
+const store = new KnexSessionStore({ knex: knex });
 
 // view engine setup
 const hbs = exphbs.create({
@@ -50,12 +57,46 @@ app.use(session({
     //generate random string
     secret: 'christopherdomey',
     resave: false,
+    store: store,
     saveUninitialized: false,
     //cookie: { secure: true }
 }))
 
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', routes)
+
+function renderLogin(user, password, done) {
+    user.verifyPassword(password, function (result) {
+        if (result) {
+            done(null, user)
+        }
+        else {
+            done(null, false, { error: 'Username and Password Combination does not match' })
+        }
+    })
+}
+
+passport.use(new LocalStrategy(
+    function (username, password, done) {
+        const emailRegex = /\S+@\S+\.\S+/;
+        if (emailRegex.test(username)) {
+            User.byEmail(username)
+                .then((user) => {
+                    if (user) { renderLogin(user, password, done) }
+                    else { return done(null, false,{ error: 'User does not exist' }); }
+                }).catch(error => { return done(error, false,{ error: 'Database error' }); })
+        }
+        else {
+            User.forge({ username: username }).fetch()
+                .then(user => {
+                    if (user) { renderLogin(user, password, done) }
+                    else { return done(null, false,{ error: 'User does not exist' }); }
+                }).catch(error => { return done(error, false,{ error: 'Database error' }); })
+        }
+    }
+));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
