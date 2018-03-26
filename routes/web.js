@@ -15,24 +15,15 @@ const path = require('path')
 router.get('/', async (req, res) => {
     // const user = await User.where('id', 1).fetch()
     // const username = user.get('username')
-
-    res.render('index', { title: 'Voyager' })
+    if (req.isAuthenticated()) { res.render('index', { username: req.user.username }) }
+    else { res.render('index', { username: "No user" }) }
 })
 
 router.get('/register', function (req, res) {
     res.render('register', { title: 'Welcome to BookSwap' })
 })
 
-function renderLogin(user, password, res) {
-    user.verifyPassword(password, function (result) {
-        if (result) {
-            res.render('login', { title: 'Successful' })
-        }
-        else {
-            res.render('login', { title: 'Login', error: 'Username and password combination does not match' })
-        }
-    })
-}
+
 
 function validate(req) {
     req.checkBody('username', 'Username field cannot be empty.').notEmpty();
@@ -80,34 +71,43 @@ router.post('/register', function (req, res) {
 })
 
 passport.serializeUser(function (user, done) {
-    done(null, user.get('username'));
+    done(null, user);
 });
 
-passport.deserializeUser(function (id, done) {
-    done(null, user.get('username'));
+passport.deserializeUser(function (user, done) {
+    done(null, user);
 });
+
+function authenticationMiddleware() {
+    return (req, res, next) => {
+        console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
+
+        if (req.isAuthenticated()) return next();
+        res.redirect('/login')
+    }
+}
 
 router.get('/login', function (req, res) {
     res.render('login', { title: 'Login' })
 })
 
-router.post('/login', function (req, res) {
-    req.checkBody('username').isEmail();
-    if (req.validationErrors()) {
-        User.forge({ username: req.body.username }).fetch()
-            .then(user => {
-                renderLogin(user, req.body.password, res)
-            }).catch(error => { res.render('login', { title: 'Login', error: 'User not found' }) })
-    }
-    else {
-        User.byEmail(req.body.username)
-            .then(user => {
-                renderLogin(user, req.body.password, res)
-            }).catch(error => { res.render('login', { title: 'Login', error: 'User not found' }) })
-    }
+router.post('/login', function (req, res, next) {
+    passport.authenticate('local', function (err, user, info) {
+        if (err||!user) { return res.render('login',info); }
+        req.logIn(user, function (err) {
+            if (err) { return next(err); }
+            return res.redirect('/');
+        });
+    })(req, res, next);
 })
 
-router.get('/mybooks', function (req, res) {
+router.get('/logout', function (req, res) {
+    req.logout();
+    req.session.destroy();
+    res.redirect('/login')
+})
+
+router.get('/mybooks', authenticationMiddleware(), function (req, res) {
     User.forge({ username: 'krishna' }).fetch({ withRelated: ['myBooks'] })
         .then(user => {
             res.render('mybooks', { title: user.related('myBooks').toJSON() })
@@ -117,6 +117,7 @@ router.get('/mybooks', function (req, res) {
 router.get('/mywishlist', function (req, res) {
     res.render('mywishlist', { title: "mywishlist" })
 })
+
 
 
 module.exports = router
