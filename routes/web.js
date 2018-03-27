@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/register', function (req, res) {
-    res.render('register', { title: 'Welcome to BookSwap' })
+    res.render('register', { title: 'Registration' })
 })
 
 
@@ -88,7 +88,7 @@ function authenticationMiddleware() {
 }
 
 router.get('/login', function (req, res) {
-    res.render('login', { title: 'Login' })
+    res.render('login', { title: 'Welcome to BookSwap' })
 })
 
 router.post('/login', function (req, res, next) {
