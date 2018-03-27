@@ -6,8 +6,9 @@
   text-align: center; }
 
 header {
-  padding: 12px;
-  border-bottom: 1px solid #eee; }
+  padding: 20px;
+  border-bottom: 1px solid #1D4A8D;
+  background-color:  #1D4A8D; }
 
 .header-container {
   display: -webkit-box;
@@ -19,14 +20,7 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center; }
-
-.header-logo {
-  width: 50px; }
-
-.header-nav a {
-  display: inline-block;
-  margin: 0 5px; }
-
+          
 .index-container {
   height: calc(100vh - 75px);
   display: -webkit-box;
@@ -42,8 +36,9 @@ header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center; }
-  .index-container h1 {
-    margin-bottom: 0; }
+
+.index-container h1 {
+  margin-bottom: 0; }
 
 .body-logo {
   width: 280px; }
@@ -59,14 +54,9 @@ body {
   color: #333; 
 }
 
-a {
-  color: #00b7ff;
-  text-decoration: none; }
-
-
 .bookswap-body {
   background-color: #1D4A8D;
-}
+ }
 
 .title {
   font-size: 28px; font-weight: 300;
@@ -88,9 +78,9 @@ a {
     display: block;
     width: 100%;
     padding: .375rem .75rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
     line-height: 1.5;
-    color: #495057;
+    color: #ffffff;
 
     border-top: none !important;
     border-left: none !important;
@@ -104,9 +94,14 @@ a {
 	color: #fff;
 }
 
+
 ::placeholder {
     color: #fff;
     opacity: 1; /* Firefox */
+}
+
+#round {
+	border-radius: 32px;
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
@@ -115,3 +110,4 @@ a {
 
 ::-ms-input-placeholder { /* Microsoft Edge */
    color: #fff;
+  }
