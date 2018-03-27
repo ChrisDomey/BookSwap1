@@ -1,24 +1,26 @@
-<div class="bookswap-body">
+<body class="bookswap-body">
     <div class="register-bookswap-icon">
         <img src="img/testImage.png" alt="Icon" style="width: 300px">
     </div>
-    <div class="container">
-        <h1>{{title}}</h1>
+    <div class="form-container">
+        <h1 class="title">{{title}}</h1>
         {{#if error}}
         <div class="alert alert-danger" role="alert">
             {{error}}
         </div>
         {{/if}}
+        <br/>
+        <br/>
         <form method="POST" action="login">
             <div class="form-group">
-                <label for="inputUsername">Username</label>
-                <input type="text" class="form-control" required name="username" placeholder="username">
+                {{!-- <label for="inputUsername">Username</label> --}}
+                <input type="text" class="register-bookswap-textField" required name="username" placeholder="Username">
             </div>
             <div class="form-group">
-                <label for="inputPassword">Password</label>
-                <input type="password" class="form-control" required name="password" placeholder="Password">
+                {{!-- <label for="inputPassword">Password</label> --}}
+                <input type="password" class="register-bookswap-textField" required name="password" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary btn-lg" id="round" >SIGN IN ></button>
         </form>
     </div>
-</div> 
+</body>  
