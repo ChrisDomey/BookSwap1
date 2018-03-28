@@ -1,11 +1,13 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:300,700);.container {
+@import url(https://fonts.googleapis.com/css?family=Lato:300,700);
+
+.container {
   max-width: 1170px;
   margin: 0 auto; }
 
 .text-center {
   text-align: center; }
 
-header {
+.header {
   padding: 20px;
   border-bottom: 1px solid #1D4A8D;
   background-color:  #1D4A8D; }
