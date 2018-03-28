@@ -1,7 +1,9 @@
 <header>
     <div class="container header-container">
-        <a href="/" style="position:absolute; right:618px; color: white">Home</a>
-        {{!-- <a>Login</a> --}}
+        <a href="/" >Home</a>
+        {{#if isAuthenticated}}
+        <a href="/logout" >Logout</a>
+        {{/if}}
     </div>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </header>
