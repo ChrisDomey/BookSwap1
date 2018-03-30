@@ -9,8 +9,8 @@
 
 .header {
   padding: 20px;
-  border-bottom: 1px solid #1D4A8D;
-  background-color:  #1D4A8D; }
+  border-bottom: 1px solid #004F8B;
+  background-color:  #004F8B; }
 
 .header-container {
   display: -webkit-box;
@@ -57,7 +57,7 @@ body {
 }
 
 .bookswap-body {
-  background-color: #1D4A8D;
+  background-color: #004F8B;
  }
 
 .title {
@@ -89,7 +89,7 @@ body {
     border-right: none !important;
     border: 1px solid #fff;
 
-    background: #1D4A8D !important;
+    background: #004F8B !important;
 }
 
 .register-bookswap-label {
