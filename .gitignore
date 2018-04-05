@@ -36,3 +36,9 @@ yarn-error.log
 package-lock.json
 
 .DS_Store
+
+#vscode files
+.vscode
+
+#bundlejs
+public/js/global.bundle.js
