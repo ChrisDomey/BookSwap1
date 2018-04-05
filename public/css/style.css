@@ -98,7 +98,7 @@ body {
 
 
 ::placeholder {
-    color: #fff;
+    color: rgb(56, 54, 54);
     opacity: 1; /* Firefox */
 }
 
@@ -106,10 +106,20 @@ body {
 	border-radius: 32px;
 }
 
+#round-inputleft {
+  border-radius: 15px 0 0 15px;
+}
+
+#round-inputright {
+  border-radius: 0 15px 15px 0;
+}
+
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color: #fff;
+   color: rgb(56, 54, 54);
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
-   color: #fff;
+   color: rgb(56, 54, 54);
   }
+
+  
