@@ -1,5 +1,16 @@
 <body class="bookswap-body">
-        <h1 class="title">Hello {{ username }}</h1>
-        
+        <div class="form-container">
+                <h1 class="title">Hello {{ username }}</h1>
+                <form method="POST" action="search1">
+                        <div class="input-group">
+                                <input type="text" class="form-control" id="round-inputleft" placeholder="ISBN, Author or Title">
+                                <span class="input-group-btn">
+                                        <button class="btn btn-default" id="round-inputright" type="button">
+                                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                        </button>
+                                </span>
+                        </div><!-- /input-group -->
+                </form>
+        </div>        
 
 </body>
