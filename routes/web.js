@@ -12,11 +12,10 @@ const passport = require('passport');
 const path = require('path')
 
 /* GET home page. */
-router.get('/', async (req, res) => {
+router.get('/', authenticationMiddleware() ,async (req, res) => {
     // const user = await User.where('id', 1).fetch()
     // const username = user.get('username')
-    if (req.isAuthenticated()) { res.render('index', { username: req.user.username }) }
-    else { res.render('index', { username: "No user" }) }
+    res.render('index', { username: req.user.username })
 })
 
 router.get('/register', function (req, res) {
