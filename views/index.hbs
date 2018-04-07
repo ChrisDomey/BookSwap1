@@ -1,16 +1,52 @@
 <body class="bookswap-body">
+        <h1 class="title">Welcome to BookSwap {{ username }}</h1>
+        <h5 class="subtitle"> Lorem ipsum dolor si amet, conectetur adipiscing elit.</h5>
         <div class="form-container">
-                <h1 class="title">Hello {{ username }}</h1>
                 <form method="POST" action="search1">
-                        <div class="input-group">
-                                <input type="text" class="form-control" id="round-inputleft" placeholder="ISBN, Author or Title">
-                                <span class="input-group-btn">
-                                        <button class="btn btn-default" id="round-inputright" type="button">
-                                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                        </button>
-                                </span>
-                        </div><!-- /input-group -->
-                </form>
-        </div>        
+                        <table align="center">
+                                <tr>
+                                        <td>
+                                                <div class="input-group">
+                                                        <input type="text" class="form-control" id="round-inputleft" placeholder="ISBN, Author or Title">
+                                                        <span class="input-group-btn">
+                                                                <button class="btn btn-default btn-lg" id="round-inputright" type="button">
+                                                                        <span class="glyphicon glyphicon-search" id="search-dimension" aria-hidden="true"></span>
+                                                                </button>
+                                                        </span>
+                                                </div>
+                                                <!-- /input-group -->
 
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <td align="center">
+                                                <div class="text-color">-OR-</div>
+                                        </td>
+                                </tr>
+                        </table>
+                </form>
+                <form method="POST" action="search1">
+                        <table align="center">
+                                <tr>
+                                        <td>
+                                                <input type="text" class="form-control" id="round" placeholder="College or University">
+                                        </td>
+                                        <td>
+                                                <input type="text" class="form-control" id="round" placeholder="Subject or Department">
+                                        </td>
+                                        <td>
+                                                <div class="input-group">
+                                                        <input type="text" class="form-control" id="round-inputleft" placeholder="Course or Course Number">
+                                                        <span class="input-group-btn">
+                                                                <button class="btn btn-default btn-lg" id="round-inputright" type="button">
+                                                                        <span class="glyphicon glyphicon-search" id="search-dimension" aria-hidden="true"></span>
+                                                                </button>
+                                                        </span>
+                                                </div>
+                                                <!-- /input-group -->
+                                        </td>
+                                </tr>
+                        </table>
+                </form>
+        </div>
 </body>
