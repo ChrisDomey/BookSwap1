@@ -106,20 +106,29 @@ router.get('/logout', function (req, res) {
     res.redirect('/login')
 })
 
-router.get('/mybooks', authenticationMiddleware(), function (req, res) {
-    User.forge({ username: 'krishna' }).fetch({ withRelated: ['myBooks'] })
+router.get('/userbooks/:username', authenticationMiddleware(), function (req, res) {
+    User.forge({ username: req.params.username }).fetch({ withRelated: ['myBooks'] })
         .then(user => {
             var userBooks = user.related('myBooks');
             userBooks.fetch({ withRelated: ['book'] })
-                .then(userBookss => {
-                    res.render('mybooks', { title:"My books",data:userBookss.toJSON()})
+                .then(userBooks => {
+                    res.render('mybooks', { title:"My books",data:userBooks.toJSON()})
                 }
                 )
         })
 })
 
 router.get('/mywishlist', authenticationMiddleware(), function (req, res) {
-    res.render('mywishlist', { title: "mywishlist" })
+    User.forge({ username: req.user.username }).fetch({ withRelated: ['myWishlist'] })
+        .then(user => {
+            var userWishlist = user.related('myWishlist');
+            userWishlist.fetch({ withRelated: ['book'] })
+                .then(userWishlist => {
+                    console.log(userWishlist.toJSON());
+                    res.render('mywishlist', { title:"My wishlist",data:userWishlist.toJSON()})
+                }
+                )
+        })
 })
 
 

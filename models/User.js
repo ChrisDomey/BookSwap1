@@ -1,5 +1,6 @@
 const bookshelf = require('../config/bookshelf')
 const UserBook = require('../models/UserBook')
+const UserWishlist = require('../models/UserWishlist')
 const bcrypt = require('bcrypt');
 
 const User = bookshelf.Model.extend({
@@ -13,7 +14,7 @@ const User = bookshelf.Model.extend({
         return this.hasMany(UserBook, 'username','username')
     },
     myWishlist: function () {
-        return this.hasMany('UserWishlist', 'username')
+        return this.hasMany(UserWishlist, 'username','username')
     }
 },
     {
