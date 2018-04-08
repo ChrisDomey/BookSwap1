@@ -113,7 +113,7 @@ router.get('/mybooks', authenticationMiddleware(), function (req, res) {
         })
 })
 
-router.get('/mywishlist', function (req, res) {
+router.get('/mywishlist', authenticationMiddleware(), function (req, res) {
     res.render('mywishlist', { title: "mywishlist" })
 })
 
