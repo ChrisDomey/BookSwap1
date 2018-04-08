@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
         t.string('publisher').notNull();
         t.string('edition').notNull();
         t.date('publishDate').notNull();
-        t.string('state').notNull();
+        t.string('binding').notNull();
     });
 };
 
