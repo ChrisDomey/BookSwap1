@@ -1,3 +1,17 @@
-{{#each title}}
-{{this.ISBN}}
-{{/each}}
+<body class="bookswap-body">
+        {{#each data}}
+            <div>
+                {{this.ISBN}}
+                {{this.dateUploaded}}
+                {{this.condition}}
+                {{this.transaction}}
+                {{this.status}}
+                {{this.book.title}}
+                {{this.book.author}}
+                {{this.book.publisher}}
+                {{this.book.edition}}
+                {{this.book.publishDate}}
+                {{this.book.state}}
+            </div>
+        {{/each}}
+</body>

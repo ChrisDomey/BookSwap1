@@ -1,4 +1,4 @@
- const express = require('express')
+const express = require('express')
 const router = express.Router()
 const expressValidator = require('express-validator')
 const User = require('../models/User')
@@ -12,7 +12,7 @@ const passport = require('passport');
 const path = require('path')
 
 /* GET home page. */
-router.get('/', authenticationMiddleware() ,async (req, res) => {
+router.get('/', authenticationMiddleware(), async (req, res) => {
     // const user = await User.where('id', 1).fetch()
     // const username = user.get('username')
     res.render('index', { username: req.user.username })
@@ -92,7 +92,7 @@ router.get('/login', function (req, res) {
 
 router.post('/login', function (req, res, next) {
     passport.authenticate('local', function (err, user, info) {
-        if (err||!user) { return res.render('login',info); }
+        if (err || !user) { return res.render('login', info); }
         req.logIn(user, function (err) {
             if (err) { return next(err); }
             return res.redirect('/');
@@ -109,7 +109,12 @@ router.get('/logout', function (req, res) {
 router.get('/mybooks', authenticationMiddleware(), function (req, res) {
     User.forge({ username: 'krishna' }).fetch({ withRelated: ['myBooks'] })
         .then(user => {
-            res.render('mybooks', { title: user.related('myBooks').toJSON() })
+            var userBooks = user.related('myBooks');
+            userBooks.fetch({ withRelated: ['book'] })
+                .then(userBookss => {
+                    res.render('mybooks', { title:"My books",data:userBookss.toJSON()})
+                }
+                )
         })
 })
 
