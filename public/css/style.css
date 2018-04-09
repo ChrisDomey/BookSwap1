@@ -62,8 +62,9 @@ td {
 }
 
 .register-bookswap-textField {
+
     display: block;
-    width: 100%;
+    width: 95%;
     padding: .375rem .75rem;
     font-size: 1.5rem;
     line-height: 1.5;
@@ -72,13 +73,22 @@ td {
     border-top: none !important;
     border-left: none !important;
     border-right: none !important;
-    border: 1px solid #fff;
+    margin-bottom: 1px !important;
+    /*border: 1px solid #fff;*/
+    border-bottom: 1px solid #fff;
 
     background: #004F8B !important;
 }
 
 .register-bookswap-label {
 	color: #fff;
+}
+
+.sign-in-button {
+    height: 50px; width: 150px;
+    color: #fff;
+    background-color: #429cdb;
+    border-color: #429cdb !important;
 }
 
 

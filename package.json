@@ -14,7 +14,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "dotenv-safe": "^4.0.4",
-    "express": "~4.15.5",
+    "express": "^4.15.5",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "express-validator": "^5.0.3",
@@ -43,7 +43,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "supertest": "^3.0.0",
-    "webpack": "^3.10.0",
+    "webpack": "^3.11.0",
     "webpack-cli": "^2.0.13"
   }
 }

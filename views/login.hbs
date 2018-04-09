@@ -1,4 +1,4 @@
-<body class="bookswap-body">
+<body class="bookswap-body" style="padding-top: 100px">
     <div class="register-bookswap-icon">
         <img src="img/bookswap_vert.png" alt="Icon" style="width: 300px">
     </div>
@@ -12,16 +12,27 @@
         <br/>
         <br/>
         <form method="POST" action="login">
-            <div class="input-group">
-                <span class="register-bookswap-textField input-group-addon glyphicon glyphicon-user"></span>
-                <input type="text" class="register-bookswap-textField" id="login" required name="username" placeholder="Username">
+            <div class="input-group" style="margin: auto;
+    margin-bottom: 15px;">
+                <span class="register-bookswap-textField input-group-addon glyphicon glyphicon-user" style="    padding: 6px 12px;
+    font-size: 14px; font-weight: normal; line-height: 1; text-align: center;
+    margin-bottom: 2px !important; border: 1px solid #fff;"></span>
+                <input type="text" class="register-bookswap-textField" id="login" required name="username" placeholder="Email Address">
             </div>
-            <div class="input-group">
-                <span class="register-bookswap-textField input-group-addon glyphicon glyphicon-lock"></span>
+            
+            <div class="input-group" style="margin: auto;
+    margin-bottom: 15px;">
+                <span class="register-bookswap-textField input-group-addon glyphicon glyphicon-lock" style="    padding: 6px 12px;
+    font-size: 14px; font-weight: normal; line-height: 1;
+    text-align: center; margin-bottom: 2px !important;
+    border: 1px solid #fff;"></span>
                 <input type="password" class="register-bookswap-textField" id="login" required name="password" placeholder="Password">
             </div>
-            <br/>
-            <button type="submit" class="btn btn-primary btn-lg" id="round" >SIGN IN ></button>
+
+            <div class="text-center" style="padding-top: 15px;">
+                <button type="submit" class="btn sign-in-button btn-lg" id="round">SIGN IN ></button>
+            </div>
+            
         </form>
     </div>
 </body>  
