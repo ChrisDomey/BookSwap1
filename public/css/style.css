@@ -11,8 +11,12 @@
   color: #fff;
 }
 
-.align{
-  align-self: center;
+.rightalign{
+  text-align-last: right;
+}
+
+.leftalign{
+  text-align-last: left;
 }
 
 table {
@@ -24,56 +28,12 @@ td {
   padding: 10px 10px;
 }
 
-
-
-.header {
-  padding: 20px;
-  border-bottom: 1px solid #004F8B;
-  background-color:  #004F8B; }
-
-.header-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
-          
-.index-container {
-  height: calc(100vh - 75px);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
-
-.index-container h1 {
-  margin-bottom: 0; }
-
 .body-logo {
   width: 280px; }
 
 .index-nav a {
   display: inline-block;
   margin: 0 3px; }
-
-body {
-  margin: 0;
-  font-size: 14px;
-  font-family: "Lato", sans-serif;
-  color: #333; 
-}
 
 .bookswap-body {
   background-color: #004F8B;
@@ -122,9 +82,15 @@ body {
 }
 
 
-::placeholder {
-    color:  rgb(56, 54, 54);
-    opacity: 1; /* Firefox */
+input#index::placeholder {
+    color:  rgb(0, 79, 139);
+    opacity: 1; 
+    text-align: center;/* Firefox */
+}
+
+input#login::placeholder {
+    color: #fff;
+    opacity: 1;
 }
 
 #round {
@@ -132,11 +98,11 @@ body {
 }
 
 #round-inputleft {
-  border-radius: 15px 0 0 15px;
+  border-radius: 32px 0 0 32px;
 }
 
 #round-inputright {
-  border-radius: 0 15px 15px 0;
+  border-radius: 0 32px 32px 0;
 }
 
 #search-dimension{
@@ -145,11 +111,37 @@ body {
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color: rgb(56, 54, 54);
+   color: rgb(0, 79, 139);
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
-   color: rgb(56, 54, 54);
+   color: rgb(0, 79, 139);
   }
 
-  
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #004F8B ;
+  overflow: hidden;
+  border-bottom: 1px solid #fff;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #004F8B ;
+  color: #F4D10D;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #004F8B ;
+  color: #F4D10D;
+}  
