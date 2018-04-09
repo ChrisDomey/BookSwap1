@@ -1,7 +1,8 @@
-<body class="bookswap-body">
+<body class="bookswap-body pt-100">
     <div class="register-bookswap-icon">
-        <img src="img/bookswap_vert.png" alt="Icon" style="width: 300px">
+        <img class="pr-10" src="img/bookswap_vert.png" alt="Icon" style="width: 300px;">
     </div>
+    
     <div class="form-container">
         <h1 class="title">{{title}}</h1>
         {{#if errors}} {{#each errors}}
@@ -47,7 +48,7 @@
                     <input type="password" class="register-bookswap-textField" required name="password2" placeholder="Re-enter Password">
                 </div>
 
-                <div class="text-center" style="padding-top: 15px;">
+                <div class="text-center pt-15">
                     <button type="submit" class="btn sign-in-button btn-lg" id="round">SIGN UP ></button>
                 </div>
             </form>
