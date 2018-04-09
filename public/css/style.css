@@ -7,8 +7,16 @@
 .text-center {
   text-align: center; }
 
+.text-left {
+  text-align: left;
+}
+
 .text-color{
   color: #fff;
+}
+
+.text-color2{
+  color: #1B4A97;
 }
 
 .rightalign{
@@ -20,7 +28,7 @@
 }
 
 table {
-  border-collapse: separate;
+  border-collapse: collapse;
   border-spacing: 50px 0;
 }
 
@@ -38,6 +46,10 @@ td {
 .bookswap-body {
   background-color: #004F8B;
  }
+
+.bookswap-body-white{
+  background-color: #F1F1F1
+}
 
 .title {
   font-size: 28px; font-weight: 300;
@@ -162,7 +174,7 @@ input#login::placeholder {
 .topnav {
   background-color: #004F8B ;
   overflow: hidden;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid #5B8BBE;
 }
 
 /* Style the links inside the navigation bar */

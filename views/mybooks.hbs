@@ -1,17 +1,61 @@
-<body class="bookswap-body">
+<body class="bookswap-body-white">
+    <h1 class="text-color2">My Books</h1>  
+    <div>
         {{#each data}}
-            <div>
-                {{this.ISBN}}
-                {{this.dateUploaded}}
-                {{this.condition}}
-                {{this.transaction}}
-                {{this.status}}
-                {{this.book.title}}
-                {{this.book.author}}
-                {{this.book.publisher}}
-                {{this.book.edition}}
-                {{this.book.publishDate}}
-                {{this.book.state}}
+        <div class="row">
+            <div class="col">
+                <div>
+                    <div class="row">
+                        <div class="col">
+                            <h2 class="text-color2">{{this.book.title}}</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h5>By {{this.book.author}}</h5>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div>
+                    <div class="row">
+                        <div class="col">
+                            Published By {{this.book.publisher}}
+                        </div>
+                        <div class="col">
+                            Condition: {{this.condition}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Edition: {{this.book.edition}}
+                        </div>
+                        <div class="col">
+                            Binding: {{this.book.state}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            ISBN: {{this.ISBN}}
+                        </div>
+                        <div class="col">
+                            Status: {{this.status}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            Uploaded: {{this.dateUploaded}}
+                        </div>
+                        <div class="col">
+                            Type: {{this.transaction}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         {{/each}}
+    </div>   
 </body>
