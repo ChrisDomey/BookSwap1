@@ -1,5 +1,5 @@
-<body class="bookswap-body-white">
-    <h1 class="text-color2">My Books</h1>  
+<body class="bookswap-body-white"
+    <h1 class="text-color2">My Books</h1>
     <div>
         {{#each data}}
         <div class="row">
@@ -12,7 +12,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <h5>By {{this.book.author}}</h5>
+                            <h5 class="mybooks-color2">By <div class="mybooks-color3">{{this.book.author}}</div></h5>
                         </div>
                     </div>
                 </div>
@@ -36,6 +36,7 @@
                         <div class="col">
                             Binding: {{this.book.state}}
                         </div>
+                        
                     </div>
                     <div class="row">
                         <div class="col">
@@ -55,7 +56,26 @@
                     </div>
                 </div>
             </div>
+            <div class="col">
+                <div>
+                    <div class="row">
+                        <div class="col">
+                            <h5 class="mybooks-color1">Posted 9.13.17</h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-lg mybooks-color1" id="round">$ SOLD THIS BOOK</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="submit" class="btn btn-lg mybooks-color1" id="round">SWAPPED THIS BOOK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         {{/each}}
-    </div>   
+    </div>
 </body>
