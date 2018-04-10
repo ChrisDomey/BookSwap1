@@ -5,7 +5,8 @@
   margin: 0 auto; }
 
 .text-center {
-  text-align: center; }
+  text-align: center; 
+}
 
 .text-left {
   text-align: left;
@@ -16,7 +17,7 @@
 }
 
 .text-color2{
-  color: #1B4A97;
+  color: #1B4A97 !important;
 }
 
 .mybooks-color1{
@@ -24,11 +25,11 @@
 }
 
 .mybooks-color2{
-  color: #4F4F4F;
+  color: #4F4F4F !important;
 }
 
 .mybooks-color3{
-  color: #767676;
+  color: #767676 !important;
 }
 
 .rightalign{
@@ -83,12 +84,59 @@ td {
   font-weight: 300 !important;
 }
 
+
+.font22 {
+	font-size: 22px !important;
+}
+
+.font14 {
+	font-size: 14px !important;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
 .width170 {
   width: 170px !important;
 }
 
 .width240 {
   width: 240px !important;
+}
+
+.width600 {
+	width: 600px;
+}
+
+.sec1 {
+	padding-right: 20px;
+}
+.sec2 {
+	width: 590px;
+	display: inline-block;
+	height: 110px;
+}
+
+.sec3 {
+	width: 240px;
+	display: inline-block;
+	height: 110px; float: right; padding-top: 20px;
+}
+
+.sec1-mybooks {
+	padding-right: 20px;
+}
+.sec2-mybooks {
+	width: 590px;
+	display: inline-block;
+	height: 110px;
+}
+
+.sec3-mybooks {
+	width: 240px;
+	display: inline-block;
+	height: 110px; float: right; padding-top: 20px;
 }
 
 .form-container {
@@ -98,6 +146,18 @@ td {
 
 .form-container-search {
 	max-width: 70%;
+	margin: auto;
+}
+
+.form-container-wishlist {
+	font-size: 14px;
+	max-width: 960px;
+	margin: auto;
+}
+
+.form-container-mybooks {
+	font-size: 14px;
+	max-width: 960px;
 	margin: auto;
 }
 
@@ -156,6 +216,23 @@ td {
     border-color: #429cdb !important;
 }
 
+.view-result-button {
+	border: 1px solid #214D93 !important;;
+	/*background-color: transparent;*/
+	background-color: #F1F1F1;
+	margin-top: 10px;
+}
+
+.sold-book-button {
+	border: 1px solid #214D93 !important;;
+	/*background-color: transparent;*/
+	background-color: #F1F1F1;
+	margin-top: 10px;
+}
+
+.pt-10 {
+  padding-top: 10px;
+}
 .pt-15 {
   padding-top: 15px;
 }
@@ -164,6 +241,12 @@ td {
 }
 .pt-40 {
   padding-top: 40px;
+}
+.pt-50 {
+  padding-top: 50px;
+}
+.pt-60 {
+  padding-top: 60px;
 }
 .pt-100 {
   padding-top: 100px
@@ -177,6 +260,31 @@ td {
   padding-bottom: 30px;
 }
 
+.sec1 {
+	display: inline-block;
+}
+.sec2-1 {
+	width: 300px;
+	float: left;
+}
+
+.sec2-2 {
+	width: 290px;
+    float: right;
+}
+
+.sec1-mybooks {
+	display: inline-block;
+}
+.sec2-1-mybooks {
+	width: 300px;
+	float: left;
+}
+
+.sec2-2-mybooks {
+	width: 290px;
+    float: right;
+}
 
 input#index::placeholder {
     color:  rgb(0, 79, 139);

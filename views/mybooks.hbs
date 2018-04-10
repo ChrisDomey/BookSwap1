@@ -1,81 +1,125 @@
-<body class="bookswap-body-white"
-    <h1 class="text-color2">My Books</h1>
-    <div>
-        {{#each data}}
-        <div class="row">
-            <div class="col">
-                <div>
-                    <div class="row">
-                        <div class="col">
-                            <h2 class="text-color2">{{this.book.title}}</h2>
-                        </div>
+<body class="bookswap-body-white">
+    <div class="form-container-mybooks">
+        <h1 class="text-color2 pt-50">My Books</h1>
+        <div>
+            {{#each data}}
+            <hr>
+
+
+            <div class="book-details pb-30">
+                <div class="sec1">
+                    <img src="/img/no-image-available.jpg" style="width: 87px; padding-top: 15px;">
+                </div>
+
+                <div class="sec2-mybooks">
+                    <h2 class="text-color2 font22">{{this.book.title}}</h2>
+                    <h5 class="mybooks-color2 font14">By <span class="author-name mybooks-color3">{{this.book.author}}</span></h5>
+
+                    <div class="sec2-1-mybooks pt-10">
+                        <h5 class="mybooks-color2 font14">Published <span class="author-name mybooks-color3">by {{this.book.publisher}}</span></h5>
+                        <h5 class="mybooks-color2 font14">ISBN: <span class="author-name mybooks-color3">{{this.ISBN}}</span></h5>
+                        <h5 class="mybooks-color2 font14">Edition: <span class="author-name mybooks-color3">{{this.book.edition}}</span></h5>
+                        <!-- <h5 class="mybooks-color2 font14">Uploaded: <span class="author-name mybooks-color3">{{this.dateUploaded}}</span></h5> -->
+                        <h5 class="mybooks-color2 font14">Uploaded: <span class="author-name mybooks-color3">6.4.2017</span></h5>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <h5 class="mybooks-color2">By <div class="mybooks-color3">{{this.book.author}}</div></h5>
+
+                    <div class="sec2-2-mybooks pt-10">
+                        <h5 class="mybooks-color2 font14">Condition: <span class="author-name mybooks-color3">{{this.condition}}</span></h5>
+                        <h5 class="mybooks-color2 font14">Binding: <span class="author-name mybooks-color3">{{this.book.state}}</span></h5>
+                        <h5 class="mybooks-color2 font14">Status: <span class="author-name mybooks-color3">{{this.status}}</span></h5>
+                        <h5 class="mybooks-color2 font14">Type: <span class="author-name mybooks-color3">{{this.transaction}}</span></h5>
+                    </div>
+
+                </div>
+
+                <div class="sec3-mybooks text-center">
+                    <h5 class="mybooks-color1">Posted 9.13.17</h5>
+                    <button type="submit" class="btn btn-lg mybooks-color1 sold-book-button" id="round">$ SOLD THIS BOOK</button>
+                    <button type="submit" class="btn btn-lg mybooks-color1 sold-book-button" id="round">SWAPPED THIS BOOK</button>
+                    <!-- <button type="submit" class="btn btn-lg mybooks-color1 view-result-btn" id="round">VIEW RESULTS > </button>
+                    <button type="submit" class="btn btn-lg mybooks-color2" style="float: right;"><h1> X </h1></button> -->
+                </div>
+                
+            </div>
+
+
+
+
+<!--             <div class="row">
+                <div class="col">
+                    <div>
+                        <div class="row">
+                            <div class="col">
+                                <h2 class="text-color2">{{this.book.title}}</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="mybooks-color2">By <div class="mybooks-color3">{{this.book.author}}</div></h5>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <div>
+                        <div class="row">
+                            <div class="col">
+                                Published By {{this.book.publisher}}
+                            </div>
+                            <div class="col">
+                                Condition: {{this.condition}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                Edition: {{this.book.edition}}
+                            </div>
+                            <div class="col">
+                                Binding: {{this.book.state}}
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                ISBN: {{this.ISBN}}
+                            </div>
+                            <div class="col">
+                                Status: {{this.status}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                Uploaded: {{this.dateUploaded}}
+                            </div>
+                            <div class="col">
+                                Type: {{this.transaction}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div>
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="mybooks-color1">Posted 9.13.17</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-lg mybooks-color1" id="round">$ SOLD THIS BOOK</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-lg mybooks-color1" id="round">SWAPPED THIS BOOK</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            {{/each}}
         </div>
-        <div class="row">
-            <div class="col">
-                <div>
-                    <div class="row">
-                        <div class="col">
-                            Published By {{this.book.publisher}}
-                        </div>
-                        <div class="col">
-                            Condition: {{this.condition}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            Edition: {{this.book.edition}}
-                        </div>
-                        <div class="col">
-                            Binding: {{this.book.state}}
-                        </div>
-                        
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            ISBN: {{this.ISBN}}
-                        </div>
-                        <div class="col">
-                            Status: {{this.status}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            Uploaded: {{this.dateUploaded}}
-                        </div>
-                        <div class="col">
-                            Type: {{this.transaction}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div>
-                    <div class="row">
-                        <div class="col">
-                            <h5 class="mybooks-color1">Posted 9.13.17</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" class="btn btn-lg mybooks-color1" id="round">$ SOLD THIS BOOK</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" class="btn btn-lg mybooks-color1" id="round">SWAPPED THIS BOOK</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{/each}}
     </div>
 </body>
