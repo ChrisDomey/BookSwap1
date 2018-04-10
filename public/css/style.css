@@ -19,6 +19,18 @@
   color: #1B4A97;
 }
 
+.mybooks-color1{
+  color: #214D93 !important;
+}
+
+.mybooks-color2{
+  color: #4F4F4F;
+}
+
+.mybooks-color3{
+  color: #767676;
+}
+
 .rightalign{
     display: inline-block;
     float: right;
