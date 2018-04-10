@@ -1,56 +1,63 @@
 <body class="bookswap-body">
-        <h1 class="title">Welcome to BookSwap {{ username }}</h1>
+        <h1 class="title pt-40">Welcome <span style="text-transform: lowercase;">to</span> BookSwap, {{ username }}</h1>
         
-        <div class="form-container">
-                <form method="POST" action="search1">
-                        <table align="center">
-                                <tr>
-                                        <td>
-                                                <div class="input-group input-group-lg">
-                                                        <input type="text" class="form-control" id="round-inputleft" placeholder="ISBN, Author or Title">
-                                                        <span class="input-group-btn">
-                                                                <button class="btn btn-default btn-lg" id="round-inputright" type="button">
-                                                                        <span class="glyphicon glyphicon-search" id="search-dimension" aria-hidden="true"></span>
-                                                                </button>
-                                                        </span>
-                                                </div>
+        <h4 class="subtitle font300 pb-30">Please search for a book of your choice</h4>
+
+
+        <div class="form-container-search">
+            <form method="POST" action="search1">
+                <table align="center">
+                    <tr>
+                    	<td>
+                    		<div class="text-center">
+                            <div class="input-group input-group-lg">
+                                <input type="text" class="form-control text-center width170" id="round-inputleft" placeholder="ISBN, Author or Title">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btn-lg" id="round-inputright" type="button">
+                                        <span class="glyphicon glyphicon-search" id="search-dimension" aria-hidden="true"></span>
+                                    </button>
+                                </span>
+                            </div>
+                            </div>
                                                 <!-- /input-group -->
-                                        </td>
-                                </tr>
-                                <tr>
-                                        <td align="center">
-                                                <div class="text-color">-Or-</div>
-                                        </td>
-                                </tr>
-                        </table>
-                </form>
-                <form method="POST" action="search1">
-                        <table align="center">
-                                <tr>
-                                        <td>
-                                                <div class="input-group input-group-lg">
-                                                        <input type="text" class="form-control input-lg" id="round" placeholder="College or University">
-                                                </div>     
-                                        </td>
-                                        <td>
-                                                <div class="input-group input-group-lg">
-                                                        <input type="text" class="form-control input-lg" id="round" placeholder="Subject or Department">
-                                                </div>
-                                                
-                                        </td>
-                                        <td>
-                                                <div class="input-group input-group-lg">
-                                                        <input type="text" class="form-control" id="round-inputleft" placeholder="Course or Course Number">
-                                                        <span class="input-group-btn">
-                                                                <button class="btn btn-default btn-lg" id="round-inputright" type="button">
-                                                                        <span class="glyphicon glyphicon-search" id="search-dimension" aria-hidden="true"></span>
-                                                                </button>
-                                                        </span>
-                                                </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <div class="text-color">-Or-</div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+                
+            <form method="POST" action="search1">
+            	<table align="center">
+                    <tr>
+                        <td>
+                            <div class="input-group input-group-lg">
+                                <input type="text" class="form-control input-lg text-center width240" id="round" placeholder="College or University">
+                            </div>     
+                        </td>
+
+                        <td>
+                            <div class="input-group input-group-lg">
+                                <input type="text" class="form-control input-lg text-center width240" id="round" placeholder="Subject or Department">
+                            </div>
+                        </td>
+                        
+                        <td>
+                            <div class="input-group input-group-lg">
+                                <input type="text" class="form-control text-center width170" id="round-inputleft" placeholder="Course or Course Number">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btn-lg" id="round-inputright" type="button">
+                                        <span class="glyphicon glyphicon-search" id="search-dimension" aria-hidden="true"></span>
+                                    </button>
+                                </span>
+                            </div>
                                                 <!-- /input-group -->
-                                        </td>
-                                </tr>
-                        </table>
-                </form>
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
 </body>

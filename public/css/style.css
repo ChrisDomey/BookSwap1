@@ -20,10 +20,14 @@
 }
 
 .rightalign{
-  text-align-last: right;
+    display: inline-block;
+    float: right;
+    padding: 38px 20px;
+    margin: auto 0;
 }
 
 .leftalign{
+  display: inline-block;
   text-align-last: left;
 }
 
@@ -55,17 +59,34 @@ td {
   font-size: 28px; font-weight: 300;
   color: white;
   text-align: center;
+  text-transform: capitalize;
 }
-
 
 .subtitle {
   color: white;
   text-align: center;
 }
 
+.font300 {
+  font-weight: 300 !important;
+}
+
+.width170 {
+  width: 170px !important;
+}
+
+.width240 {
+  width: 240px !important;
+}
+
 .form-container {
   max-width: 600px;
   margin: auto;
+}
+
+.form-container-search {
+	max-width: 70%;
+	margin: auto;
 }
 
 .login-bookswap-textField {
@@ -126,6 +147,12 @@ td {
 .pt-15 {
   padding-top: 15px;
 }
+.pt-30 {
+  padding-top: 30px;
+}
+.pt-40 {
+  padding-top: 40px;
+}
 .pt-100 {
   padding-top: 100px
 }
@@ -133,6 +160,11 @@ td {
 .pr-10 {
   padding-right: 10px;
 }
+
+.pb-30 {
+  padding-bottom: 30px;
+}
+
 
 input#index::placeholder {
     color:  rgb(0, 79, 139);
@@ -172,6 +204,7 @@ input#login::placeholder {
 
 /* Add a black background color to the top navigation */
 .topnav {
+  height: 94px;
   background-color: #004F8B ;
   overflow: hidden;
   border-bottom: 1px solid #5B8BBE;
