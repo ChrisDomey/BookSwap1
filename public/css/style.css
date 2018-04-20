@@ -62,6 +62,15 @@ td {
 	padding: 0 10px 0 0;
 }
 
+.register-logo {
+	width: 300px;
+	padding: 0 10px 0 0;
+}
+
+.mywishlist-logo {
+	width: 220px;
+}
+
 .index-nav a {
   display: inline-block;
   margin: 0 3px; }

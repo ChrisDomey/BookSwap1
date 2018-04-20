@@ -1,10 +1,10 @@
 <body class="bookswap-body">
     <div class="register-bookswap-icon pt-30">
-        <img class="pr-10" src="img/bookswap_vert.png" alt="Icon" style="width: 300px;">
+        <img class="register-logo" src="img/bookswap_vert.png" alt="Icon">
     </div>
     
     <div class="form-container">
-        <h1 class="title">{{title}}</h1>
+        <h1 class="title pb-20">{{title}}</h1>
         {{#if errors}} {{#each errors}}
         <div class="alert alert-danger" role="alert">
             {{this.msg}}
@@ -14,37 +14,31 @@
             {{dbError}}
         </div>
         {{/if}}
-        <br />
-        <br />
+
         <div class="form-container">
             <form method="POST" action="register">
                 <div class="form-group">
-                    <!-- <label for="inputUsername" class="register-bookswap-label">Username</label> -->
                     <input type="text" class="register-bookswap-textField" id="login" required name="username" placeholder="Username">
                 </div>
+                
                 <div class="form-group">
                     <div class="row">
                         <div class="col">
-                            <!-- <label for="inputFirstName">First Name</label> -->
                             <input type="text" class="register-bookswap-textField" id="login" required name="firstName" placeholder="First Name" style="width: 256px;">
                         </div>
                         
                         <div class="col">
-                            <!-- <label>Last Name</label> -->
                             <input type="text" class="register-bookswap-textField" id="login" placeholder="Last Name" name="lastName" style="width: 256px;">
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <!-- <label for="inputEmail1">Email address</label> -->
                     <input type="email" class="register-bookswap-textField" id="login" required name="email" placeholder="name@domain.com">
                 </div>
                 <div class="form-group">
-                    <!-- <label for="inputPassword">Password</label> -->
                     <input type="password" class="register-bookswap-textField" id="login" required name="password1" placeholder="Password">
                 </div>
                 <div class="form-group">
-                    <!-- <label for="inputConfirmPassword">Confirm Password</label> -->
                     <input type="password" class="register-bookswap-textField" id="login" required name="password2" placeholder="Re-enter Password">
                 </div>
 
