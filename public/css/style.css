@@ -54,7 +54,13 @@ td {
 }
 
 .body-logo {
-  width: 280px; }
+  width: 280px; 
+}
+
+.login-logo {
+	width: 300px;
+	padding: 0 10px 0 0;
+}
 
 .index-nav a {
   display: inline-block;
@@ -161,17 +167,28 @@ td {
 	margin: auto;
 }
 
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #004F8B inset;
+}
+input:-webkit-autofill {
+    -webkit-text-fill-color: #fff !important;
+}
+
 .login-bookswap-textField {
-  padding: 6px 12px;
-  font-size: 14px; font-weight: normal; line-height: 1; text-align: center;
-  margin-bottom: 1px !important; border: 1px solid #fff;
+
+  /*padding: 6px 12px;*/
+ 	padding: .375rem .75rem;
+    padding: 0 15px;
+
+ 	font-size: 14px; font-weight: normal; line-height: 1; text-align: left;
+	border: 1px solid #fff !important;
 
     display: block;
     width: 95%;
-    padding: .375rem .75rem;
+    /*padding: .375rem .75rem;*/
     font-size: 1.5rem;
     line-height: 1.5;
-    color: #ffffff;
+    color: #fff;
     border-top: none !important;
     border-left: none !important;
     border-right: none !important;
@@ -230,34 +247,51 @@ td {
 	margin-top: 10px;
 }
 
+.forgot-password {
+	cursor: pointer;
+}
+
+
 .pt-10 {
-  padding-top: 10px;
+  padding-top: 10px !important;
 }
 .pt-15 {
-  padding-top: 15px;
+  padding-top: 15px !important;
 }
 .pt-30 {
-  padding-top: 30px;
+  padding-top: 30px !important;
 }
 .pt-40 {
-  padding-top: 40px;
+  padding-top: 40px !important;
 }
 .pt-50 {
-  padding-top: 50px;
+  padding-top: 50px !important;
 }
 .pt-60 {
-  padding-top: 60px;
+  padding-top: 60px !important;
 }
 .pt-100 {
-  padding-top: 100px
+  padding-top: 100px !important;
 }
 
 .pr-10 {
-  padding-right: 10px;
+  padding-right: 10px !important;
 }
 
+.pb-10 {
+	padding-bottom: 10px !important;
+}
+.pb-15 {
+	padding-bottom: 15px !important;
+}
+.pb-20 {
+	padding-bottom: 20px !important;
+}
 .pb-30 {
-  padding-bottom: 30px;
+  padding-bottom: 30px !important;
+}
+.pb-50 {
+  padding-bottom: 50px !important;
 }
 
 .sec1 {

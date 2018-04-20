@@ -1,34 +1,34 @@
 <body class="bookswap-body">
     <div class="register-bookswap-icon pt-30">
-        <img class="pr-10" src="img/bookswap_vert.png" alt="Icon" style="width: 300px;">
+        <img class="login-logo" src="img/bookswap_vert.png" alt="Icon">
     </div>
+
+    <h1 class="title pb-20">{{title}}</h1>
+
     <div class="form-container">
-        <h1 class="title">{{title}}</h1>
         {{#if error}}
         <div class="alert alert-danger" role="alert">
             {{error}}
         </div>
         {{/if}}
-        <br/>
-        <br/>
+
         <form method="POST" action="login">
-            <div class="input-group" style="margin: auto;
-    margin-bottom: 15px;">
-                <span class="login-bookswap-textField input-group-addon glyphicon glyphicon-user" style="    "></span>
+            <div class="input-group pb-15">
+                <span class="login-bookswap-textField input-group-addon glyphicon glyphicon-user" style="margin-bottom: 1px !important;"></span>
                 <input type="text" class="login-bookswap-textField" id="login" required name="username" placeholder="Email Address">
             </div>
             
-            <div class="input-group" style="margin: auto;
-    margin-bottom: 15px;">
-                <span class="login-bookswap-textField input-group-addon glyphicon glyphicon-lock" style="    padding: 6px 12px;
-    font-size: 14px; font-weight: normal; line-height: 1;
-    text-align: center; margin-bottom: 2px !important;
-    border: 1px solid #fff;"></span>
+            <div class="input-group pb-15">
+                <span class="login-bookswap-textField input-group-addon glyphicon glyphicon-lock" style="margin-bottom: 1px !important;"></span>
                 <input type="password" class="login-bookswap-textField" id="login" required name="password" placeholder="Password">
             </div>
 
             <div class="text-center pt-15">
                 <button type="submit" class="btn sign-in-button btn-lg" id="round">SIGN IN ></button>
+            </div>
+
+            <div class="text-center pt-15">
+                <span class="forgot-password text-color font14">Forgot password?</span>
             </div>
             
         </form>
