@@ -32,11 +32,39 @@
   color: #767676 !important;
 }
 
+/* Add a black background color to the top navigation */
+.topnav {
+  /*height: 94px;*/
+  background-color: #004F8B ;
+  overflow: hidden;
+  border-bottom: 1px solid #5B8BBE;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #004F8B ;
+  color: #F4D10D;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #004F8B ;
+  color: #F4D10D;
+}  
+
 .rightalign{
     display: inline-block;
     float: right;
-    padding: 38px 20px;
-    margin: auto 0;
+    margin-top: 20px; margin-right: 100px;
 }
 
 .leftalign{
@@ -53,6 +81,93 @@ td {
   padding: 10px 10px;
 }
 
+
+.icon {
+  position: absolute;
+  top: -11px; right: -34%;
+  width: 60px; height: 60px;
+
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  /*background-color: #000;*/
+}
+
+.hamburger {
+  width: 25px; height: 3px;
+  background: #fff;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: 0.4s;
+}
+
+.hamburger:before, .hamburger:after {
+  content: '';
+  position: absolute;
+  width: 25px; height: 3px;
+  background: #fff;
+  /*box-shadow: 0 2px 5px rgba(0,0,0,0.2);*/
+  transition: 0.4s;
+}
+
+.hamburger:before {
+  top: -6px;
+}
+
+.hamburger:after {
+  top: 6px;
+}
+
+.icon.active .hamburger {
+  background: rgba(0,0,0,0);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.icon.active .hamburger:before {
+  top: 0;
+  transform: rotate(45deg);
+}
+.icon.active .hamburger:after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+
+.side-bar {
+  width: 320px;
+  position: absolute;
+  right: -320px;
+  background: #fff;
+  transition: right .4s;
+  z-index: 1;
+  border: 1px solid #1B4A97;
+  border-bottom: none !important;
+}
+
+.side-bar-active {
+  right: 0 !important;
+  transition: right .4s;
+}
+
+.side-bar-item {
+    font-size: 16px;
+    color: #1B4A97;
+    padding: 8px 25px;
+    border-bottom: 1px solid #1B4A97;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.side-bar-item:hover {
+  background: #E8E8E8;
+}
+
+
+
+
+
+
 .body-logo {
   width: 280px; 
 }
@@ -67,7 +182,7 @@ td {
 	padding: 0 10px 0 0;
 }
 
-.mywishlist-logo {
+.header-logo {
 	width: 220px;
 }
 
@@ -364,32 +479,3 @@ input#login::placeholder {
 ::-ms-input-placeholder { /* Microsoft Edge */
    color: rgb(0, 79, 139);
   }
-
-/* Add a black background color to the top navigation */
-.topnav {
-  height: 94px;
-  background-color: #004F8B ;
-  overflow: hidden;
-  border-bottom: 1px solid #5B8BBE;
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-  background-color: #004F8B ;
-  color: #F4D10D;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-  background-color: #004F8B ;
-  color: #F4D10D;
-}  

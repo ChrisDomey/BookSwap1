@@ -3,14 +3,40 @@
         {{#if isAuthenticated}}
         <div class="leftalign">
             <a href="/">
-                <img src="../img/bookswap_horiz.png" alt="Icon" style="width: 300px">
+                <img class="header-logo" src="../img/bookswap_horiz.png" alt="Icon">
             </a>
         </div>
+        
+<!--         <div class='icon'>
+            <div class="hamburger"></div>
+        </div> -->
+
         <div class="rightalign">
             <a href="/mywishlist" class="text-color">Wish List</a>
             <a href="/userbooks/{{username}}" class="text-color">My Books</a>
             <a href="/logout" class="text-color">Logout</a>
+
+            <div style="position: relative;">
+                <div class='icon'>
+                    <div class="hamburger"></div>
+                </div>
+            </div>
         </div>
+
+        <div class="side-bar">
+            <div class="side-bar-item">Wish List</div>
+            <div class="side-bar-item">My Books</div>
+            <div class="side-bar-item">Post A Book</div>
+            <div class="side-bar-item">Contact History</div>
+            <div class="side-bar-item">How It Works</div>
+            <div class="side-bar-item">FAQ</div>
+            <div class="side-bar-item">Participating Universities</div>
+            <div class="side-bar-item">Contact Us</div>
+            <div class="side-bar-item">About Us</div>
+            <div class="side-bar-item">Terms & Conditions</div>
+        </div>
+
+
         {{/if}}
     </div>
 </header>
