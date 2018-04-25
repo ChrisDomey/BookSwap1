@@ -1,0 +1,37 @@
+.form-container-wishlist {
+	font-size: 14px;
+	max-width: 960px;
+	margin: auto;
+}
+
+.wishlist-details-title {
+  color: #1B4A97 !important;
+  font-size: 22px; 
+}
+
+.wishlist-details-name {
+  font-size: 14px;
+}
+
+.wishlist-details-value {
+  color: #767676 !important;
+}
+
+.wishlist-details-sec1 {
+	width: 300px;
+	float: left;
+  padding-top: 10px;
+}
+
+.wishlist-details-sec2 {
+	width: 290px;
+  float: right;
+  padding-top: 10px;
+}
+
+.view-result-btn {
+	border: 1px solid #214D93 !important;;
+	background-color: #F1F1F1;
+	margin-top: 10px;
+  color: #214D93 !important;
+}
