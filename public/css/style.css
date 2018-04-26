@@ -122,19 +122,19 @@ td {
 
 
 .side-bar {
-  width: 320px;
-  position: absolute;
-  right: -320px;
+  display: block;
+  width: 0;
+  position: absolute; right: 0;
   background: #fff;
-  transition: right .4s;
+  transition: width .4s;
   z-index: 1;
   border: 1px solid #1B4A97;
   border-bottom: none !important;
 }
 
 .side-bar-active {
-  right: 0 !important;
-  transition: right .4s;
+  width: 300px !important;
+  transition: width .4s;
 }
 
 .side-bar-item {
