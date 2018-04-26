@@ -131,6 +131,8 @@ router.get('/mywishlist', authenticationMiddleware(), function (req, res) {
         })
 })
 
-
+router.get('/postbook', authenticationMiddleware(), function (req, res) {
+    res.render('postbook')
+})
 
 module.exports = router
