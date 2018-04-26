@@ -1,6 +1,7 @@
 <header>
+    {{#if isAuthenticated}}
     <div class="topnav">
-        {{#if isAuthenticated}}
+        
         <div class="leftalign">
             <a href="/">
                 <img class="header-logo" src="../img/bookswap_horiz.png" alt="Icon">
@@ -14,7 +15,8 @@
         <div class="rightalign">
             <a href="/mywishlist" class="text-color">Wish List</a>
             <a href="/userbooks/{{username}}" class="text-color">My Books</a>
-            <a href="/logout" class="text-color">Logout</a>
+            <a href="/postbook" class="text-color">Post a Book</a>
+            <a href="/logout" class="text-color">Sign Out</a>
 
             <div style="position: relative;">
                 <div class='icon'>
@@ -34,9 +36,9 @@
             <div class="side-bar-item">Contact Us</div>
             <div class="side-bar-item">About Us</div>
             <div class="side-bar-item">Terms & Conditions</div>
+            <div class="side-bar-item">Sign Out</div>
         </div>
 
-
-        {{/if}}
     </div>
+    {{/if}}   
 </header>
