@@ -2,27 +2,31 @@
     <div class="form-container-postbook">
         <h1 class="text-color2 pt-50 pb-50">Post a Book</h1>
         <div class="postbook-detail">
-            <div class="pb-50">
+            <form>
+                <div class="pb-50">
                 <h3 class="postbook-detail-heading">Enter ISBN to Find a Book</h3>
                 <input type="text" required name="ISBNbook" class="postbook-detail-textField">
             </div>
-            <div>
+            </form>
+            <form method="POST" action="postBook">
+                <div>
                 <div class="postbook-detail-left pt-10">
                     <h3 class="postbook-detail-heading">Condition</h3>
-                    <input type="radio" name="condition" value="new">New<br>
-                    <input type="radio" name="condition" value="average">Average<br>
-                    <input type="radio" name="condition" value="poor">Poor<br>
+                    <input type="radio" name="condition" value="new"> New<br>
+                    <input type="radio" name="condition" value="average"> Average<br>
+                    <input type="radio" name="condition" value="poor"> Poor<br>
                 </div>
                 <div class="postbook-detail-middle pt-10">
                     <h3 class="postbook-detail-heading">Transaction type</h3>
-                    <input type="radio" name="transactiontype" value="both" class="postbook-detail-name">Both<br>
-                    <input type="radio" name="transactiontype" value="trade" class="postbook-detail-name">Trade<br>
-                    <input type="radio" name="transactiontype" value="sell" class="postbook-detail-name">Swap<br>
+                    <input type="radio" name="transactiontype" value="both" class="postbook-detail-name"> Both<br>
+                    <input type="radio" name="transactiontype" value="trade" class="postbook-detail-name"> Trade<br>
+                    <input type="radio" name="transactiontype" value="sell" class="postbook-detail-name"> Swap<br>
                 </div>
                 <div class="postbook-detail-right pt-10">
                     <h3 class="postbook-detail-heading">Available on</h3>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </body>
