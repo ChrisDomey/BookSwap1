@@ -2,6 +2,7 @@
 	font-size: 14px;
 	max-width: 960px;
 	margin: auto;
+	margin-bottom: 80px;
 }
 
 .sec1-mybooks {
@@ -27,18 +28,6 @@
 .mybooks-detail-value {
 	color: #767676 !important;
 }
-
-/*.mybooks-color1{
-  color: #214D93 !important;
-}
-
-.mybooks-color2{
-  color: #4F4F4F !important;
-}
-
-.mybooks-color3{
-  color: #767676 !important;
-}*/
 
 .mybooks-additional {
 	width: 240px;
