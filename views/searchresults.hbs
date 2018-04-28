@@ -1,10 +1,8 @@
 <body class="bookswap-body-white">
 
-
 	<div class="form-container-wishlist">
-	    <h1 class="text-color2 pt-50">Wish List</h1>   
+	    <h1 class="text-color2 pt-50">SEARCH name, (number of results)</h1>   
 	    <div>
-	        {{#each data}}
 	        <hr>
 
 	        <div class="wishlist-entry pb-30">
@@ -13,17 +11,17 @@
 	        	</div>
 
 				<div class="wishlist-details">
-					<h2 class="wishlist-details-title">{{this.book.title}}</h2>
-					<h5 class="wishlist-details-name">By <span class="wishlist-details-value">{{this.book.author}}</span></h5>
+					<h2 class="wishlist-details-title"title></h2>
+					<h5 class="wishlist-details-name">By <span class="wishlist-details-value">author</span></h5>
 
 					<div class="wishlist-details-left">
-						<h5 class="wishlist-details-name">Published <span class="wishlist-details-value">by {{this.book.publisher}}</span></h5>
-						<h5 class="wishlist-details-name">ISBN: <span class="wishlist-details-value">{{this.ISBN}}</span></h5>
+						<h5 class="wishlist-details-name">Most Recently uploaded: <span class="wishlist-details-value">date</span></h5>
+						<h5 class="wishlist-details-name">Best condition: <span class="wishlist-details-value">Good</span></h5>
 					</div>
 
 					<div class="wishlist-details-right">
-						<h5 class="wishlist-details-name">Edition Number: <span class="wishlist-details-value">{{this.book.edition}}</span></h5>
-						<h5 class="wishlist-details-name">Binding: <span class="wishlist-details-value">{{this.book.state}}</span></h5>
+						<h5 class="wishlist-details-name">Binding: <span class="wishlist-details-value">hardcover</span></h5>
+						<h5 class="wishlist-details-name">Closest Distance: <span class="wishlist-details-value">(3 miles) NJIT</span></h5>
 					</div>
 				</div>
 
@@ -36,7 +34,6 @@
 					</form>
 				</div>
 	        </div>
-	        {{/each}}
 	    </div>
 	</div>
 

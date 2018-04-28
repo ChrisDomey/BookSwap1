@@ -370,7 +370,7 @@ input:-webkit-autofill {
 }
 
 
-input#index::placeholder {
+input.index::placeholder {
     color:  rgb(0, 79, 139);
     opacity: 1; 
     text-align: center;/* Firefox */

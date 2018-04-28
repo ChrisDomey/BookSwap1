@@ -5,15 +5,15 @@
 
 
         <div class="form-container-search">
-            <form method="POST" action="search1">
+            <form method="POST" action="/searchresults">
                 <table align="center">
                     <tr>
                     	<td>
                     		<div class="text-center">
                             <div class="input-group input-group-lg">
-                                <input type="text" class="form-control text-center width170" id="round-inputleft" placeholder="ISBN, Author or Title">
+                                <input type="text" class="form-control text-center width170 index" id="round-inputleft" placeholder="ISBN, Author or Title">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default btn-lg" id="round-inputright" type="button">
+                                    <button class="btn btn-default btn-lg" id="round-inputright" type="submit">
                                         <span class="glyphicon glyphicon-search" id="search-dimension" aria-hidden="true"></span>
                                     </button>
                                 </span>
@@ -30,24 +30,24 @@
                 </table>
             </form>
                 
-            <form method="POST" action="search1">
+            <form method="POST" action="/searchresults">
             	<table align="center">
                     <tr>
                         <td>
                             <div class="input-group input-group-lg">
-                                <input type="text" class="form-control input-lg text-center width240" id="round" placeholder="College or University">
+                                <input type="text" class="form-control input-lg text-center width240 index" id="round" placeholder="College or University">
                             </div>     
                         </td>
 
                         <td>
                             <div class="input-group input-group-lg">
-                                <input type="text" class="form-control input-lg text-center width240" id="round" placeholder="Subject or Department">
+                                <input type="text" class="form-control input-lg text-center width240 index" id="round" placeholder="Subject or Department">
                             </div>
                         </td>
                         
                         <td>
                             <div class="input-group input-group-lg">
-                                <input type="text" class="form-control text-center width170" id="round-inputleft" placeholder="Course or Course Number">
+                                <input type="text" class="form-control text-center width170 index" id="round-inputleft" placeholder="Course or Course Number">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default btn-lg" id="round-inputright" type="button">
                                         <span class="glyphicon glyphicon-search" id="search-dimension" aria-hidden="true"></span>
