@@ -27,8 +27,12 @@
 				</div>
 
 				<div class="wishlist-additional">
-					<button type="submit" class="btn btn-lg view-result-btn ml-30" id="round">VIEW RESULTS > </button>
-					<button type="submit" class="btn btn-lg wishlist-delete-entry">X</button>
+					<form action="/viewresults">
+						<button type="submit" class="btn btn-lg view-result-btn ml-30" id="round">VIEW RESULTS > </button>
+					</form>
+					<form>
+						<button type="submit" class="btn btn-lg wishlist-delete-entry">X</button>
+					</form>
 				</div>
 	        </div>
 	        {{/each}}
