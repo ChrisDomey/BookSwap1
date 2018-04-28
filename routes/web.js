@@ -135,4 +135,12 @@ router.get('/postbook', authenticationMiddleware(), function (req, res) {
     res.render('postbook')
 })
 
+router.get('/viewresults', authenticationMiddleware(), function (req, res) {
+    res.render('viewresults')
+})
+
+router.post('/searchresults', function (req, res, next) {
+    res.render('searchresults')
+})
+
 module.exports = router
