@@ -119,13 +119,14 @@ router.get('/userbooks/:username', authenticationMiddleware(), function (req, re
 })
 
 router.get('/mywishlist', authenticationMiddleware(), function (req, res) {
-    User.forge({ username: req.user.username }).fetch({ withRelated: ['myWishlist'] })
+    const username = req.user.username
+    User.forge({ username: username }).fetch({ withRelated: ['myWishlist'] })
         .then(user => {
             var userWishlist = user.related('myWishlist');
             userWishlist.fetch({ withRelated: ['book'] })
                 .then(userWishlist => {
                     console.log(userWishlist.toJSON());
-                    res.render('mywishlist', { title:"My wishlist",data:userWishlist.toJSON()})
+                    res.render('mywishlist', { username: username ,title:"My wishlist",data:userWishlist.toJSON()})
                 }
                 )
         })
@@ -140,6 +141,13 @@ router.get('/viewresults', authenticationMiddleware(), function (req, res) {
 })
 
 router.post('/searchresults', function (req, res, next) {
+	if(req.body.search){
+        var search = body.req.search
+        console.log(search)		
+	}
+	else{
+        console.log(req.body.university)
+	}
     res.render('searchresults')
 })
 
