@@ -3,6 +3,7 @@ const router = express.Router()
 const expressValidator = require('express-validator')
 const User = require('../models/User')
 const UserBook = require('../models/UserBook')
+const Book = require('../models/Book')
 const University = require('../models/University')
 const bcrypt = require('bcrypt')
 const saltRounds = 10;
@@ -112,20 +113,20 @@ router.get('/userbooks/:username', authenticationMiddleware(), function (req, re
             var userBooks = user.related('myBooks');
             userBooks.fetch({ withRelated: ['book'] })
                 .then(userBooks => {
-                    res.render('mybooks', { title:"My books",data:userBooks.toJSON()})
+                    res.render('mybooks', { title: "My books", data: userBooks.toJSON() })
                 }
                 )
         })
 })
 
 router.get('/mywishlist', authenticationMiddleware(), function (req, res) {
-    User.forge({ username: req.user.username }).fetch({ withRelated: ['myWishlist'] })
+    const username = req.user.username
+    User.forge({ username: username }).fetch({ withRelated: ['myWishlist'] })
         .then(user => {
             var userWishlist = user.related('myWishlist');
             userWishlist.fetch({ withRelated: ['book'] })
                 .then(userWishlist => {
-                    console.log(userWishlist.toJSON());
-                    res.render('mywishlist', { title:"My wishlist",data:userWishlist.toJSON()})
+                    res.render('mywishlist', { username: username, title: "My wishlist", data: userWishlist.toJSON() })
                 }
                 )
         })
@@ -135,12 +136,43 @@ router.get('/postbook', authenticationMiddleware(), function (req, res) {
     res.render('postbook')
 })
 
-router.get('/viewresults', authenticationMiddleware(), function (req, res) {
-    res.render('viewresults')
+router.get('/viewresults/:ISBN', authenticationMiddleware(), function (req, res) {
+    Book.forge({ ISBN: req.params.ISBN }).fetch({ withRelated: ['userBooks'] })
+        .then(book => {
+            var userBooks = book.related('userBooks');
+            userBooks.fetch({ withRelated: ['user'] })
+                .then(userBooks => {
+                    console.log(userBooks.toJSON())
+                    res.render('viewresults', { title: "view results", userBooks: userBooks.toJSON() })
+                }
+                )
+        })    
 })
 
 router.post('/searchresults', function (req, res, next) {
-    res.render('searchresults')
+    if (req.body.search) {
+        const searchIfISBN = req.body.search.replace(/-/g, "");
+        if (/^\d+$/.test(searchIfISBN)) {
+            Book.byISBN(req.body.search).then(book => {
+                res.render('searchresults', { books: book.toJSON() })
+            })
+        }
+        else {
+            Book.byAuthorOrTitle(req.body.search).then(books => {
+                console.log(books.toJSON());
+                res.render('searchresults', { books: books.toJSON() })
+            })
+        }
+    }
+    else {
+        const university = req.body.university
+        const department = req.body.department
+        const course = req.body.course
+        University.books(university, department, course).then(books => {
+            console.log(books.toJSON())
+            res.render('searchresults', { books: books.toJSON() })
+        })
+    }
 })
 
 module.exports = router
