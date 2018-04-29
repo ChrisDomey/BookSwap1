@@ -145,18 +145,24 @@ router.post('/searchresults', function (req, res, next) {
         const searchIfISBN = req.body.search.replace(/-/g, "");
         if (/^\d+$/.test(searchIfISBN)) {
             Book.byISBN(req.body.search).then(book => {
-                res.render('searchresults',{books:book})
+                res.render('searchresults', { books: book })
             })
         }
-        else{
+        else {
             Book.byAuthorOrTitle(req.body.search).then(books => {
                 console.log(books.toJSON());
-                res.render('searchresults',{books:books})
+                res.render('searchresults', { books: books })
             })
         }
     }
     else {
-        console.log(req.body.university)
+        const university = req.body.university
+        const department = req.body.department
+        const course = req.body.course
+        University.books(university, department, course).then(books => {
+            console.log(books.toJSON())
+            res.render('searchresults', { books: books })
+        })
     }
 })
 
