@@ -1,7 +1,7 @@
 const bookshelf = require('../config/bookshelf')
-const UserBook = require('../models/UserBook')
-const UserWishlist = require('../models/UserWishlist')
 const bcrypt = require('bcrypt');
+const UserWishlist = require('../models/UserWishlist')
+bookshelf.plugin('registry')
 
 const User = bookshelf.Model.extend({
     tableName: 'user',
@@ -11,10 +11,10 @@ const User = bookshelf.Model.extend({
         })
     },
     myBooks: function () {
-        return this.hasMany(UserBook, 'username','username')
+        return this.hasMany('UserBook', 'username','username')
     },
     myWishlist: function () {
-        return this.hasMany(UserWishlist, 'username','username')
+        return this.hasMany('UserWishlist', 'username','username')
     }
 },
     {
@@ -26,4 +26,4 @@ const User = bookshelf.Model.extend({
         }
     })
     
-module.exports = User
+module.exports = bookshelf.model('User', User);

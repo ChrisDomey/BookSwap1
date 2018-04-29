@@ -1,14 +1,15 @@
 const bookshelf = require('../config/bookshelf')
-const Book = require('../models/Book')
+bookshelf.plugin('registry')
+
 const UserWishlist = bookshelf.Model.extend({
     tableName: 'userWishlist',
     user: function () {
         return this.belongsTo('User', 'username', 'username');
     },
     book: function () {
-        return this.hasOne(Book, 'ISBN', 'ISBN');
+        return this.belongsTo('Book', 'ISBN', 'ISBN');
     }
 })
 
 
-module.exports = UserWishlist
+module.exports = bookshelf.model('UserWishlist', UserWishlist);

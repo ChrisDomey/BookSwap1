@@ -1,12 +1,13 @@
 const bookshelf = require('../config/bookshelf')
+bookshelf.plugin('registry')
 
 const Book = bookshelf.Model.extend({
     tableName: 'book',
     userBooks: function () {
-        return this.belongsTo('UserBook', 'ISBN', 'ISBN')
+        return this.hasMany('UserBook', 'ISBN', 'ISBN')
     },
     userWishlist: function () {
-        return this.belongsTo('UserWishlist', 'ISBN', 'ISBN')
+        return this.hasMany('UserWishlist', 'ISBN', 'ISBN')
     }
 },
     {
@@ -22,4 +23,4 @@ const Book = bookshelf.Model.extend({
 )
 
 
-module.exports = Book
+module.exports = bookshelf.model('Book', Book);

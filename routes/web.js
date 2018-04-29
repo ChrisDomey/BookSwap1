@@ -136,8 +136,17 @@ router.get('/postbook', authenticationMiddleware(), function (req, res) {
     res.render('postbook')
 })
 
-router.get('/viewresults', authenticationMiddleware(), function (req, res) {
-    res.render('viewresults')
+router.get('/viewresults/:ISBN', authenticationMiddleware(), function (req, res) {
+    Book.forge({ ISBN: req.params.ISBN }).fetch({ withRelated: ['userBooks'] })
+        .then(book => {
+            var userBooks = book.related('userBooks');
+            userBooks.fetch({ withRelated: ['user'] })
+                .then(userBooks => {
+                    console.log(userBooks.toJSON())
+                    res.render('viewresults', { title: "view results", userBooks: userBooks.toJSON() })
+                }
+                )
+        })    
 })
 
 router.post('/searchresults', function (req, res, next) {
@@ -145,13 +154,13 @@ router.post('/searchresults', function (req, res, next) {
         const searchIfISBN = req.body.search.replace(/-/g, "");
         if (/^\d+$/.test(searchIfISBN)) {
             Book.byISBN(req.body.search).then(book => {
-                res.render('searchresults', { books: book })
+                res.render('searchresults', { books: book.toJSON() })
             })
         }
         else {
             Book.byAuthorOrTitle(req.body.search).then(books => {
                 console.log(books.toJSON());
-                res.render('searchresults', { books: books })
+                res.render('searchresults', { books: books.toJSON() })
             })
         }
     }
@@ -161,7 +170,7 @@ router.post('/searchresults', function (req, res, next) {
         const course = req.body.course
         University.books(university, department, course).then(books => {
             console.log(books.toJSON())
-            res.render('searchresults', { books: books })
+            res.render('searchresults', { books: books.toJSON() })
         })
     }
 })
