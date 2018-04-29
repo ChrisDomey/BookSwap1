@@ -29,7 +29,7 @@
 }
 
 /* Style the links inside the navigation bar */
-.topnav a {
+.topnav a.navtabs {
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
@@ -38,16 +38,24 @@
 }
 
 /* Change the color of links on hover */
-.topnav a:hover {
+.topnav a.navtabs:hover {
   background-color: #004F8B ;
   color: #F4D10D;
 }
 
 /* Add a color to the active/current link */
-.topnav a.active {
+.topnav a.navtabs:active {
   background-color: #004F8B ;
   color: #F4D10D;
 }  
+
+.topnav a.two {
+  font-size: 16px;
+  color: #1B4A97 !important; 
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+}
 
 .rightalign{
     display: inline-block;
@@ -139,7 +147,7 @@ td {
 
 .side-bar-item {
     font-size: 16px;
-    color: #1B4A97;
+    color: #1B4A97 !important; 
     padding: 8px 25px;
     border-bottom: 1px solid #1B4A97;
     text-transform: uppercase;
