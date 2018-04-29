@@ -3,6 +3,7 @@ const router = express.Router()
 const expressValidator = require('express-validator')
 const User = require('../models/User')
 const UserBook = require('../models/UserBook')
+const Book = require('../models/Book')
 const University = require('../models/University')
 const bcrypt = require('bcrypt')
 const saltRounds = 10;
@@ -112,7 +113,7 @@ router.get('/userbooks/:username', authenticationMiddleware(), function (req, re
             var userBooks = user.related('myBooks');
             userBooks.fetch({ withRelated: ['book'] })
                 .then(userBooks => {
-                    res.render('mybooks', { title:"My books",data:userBooks.toJSON()})
+                    res.render('mybooks', { title: "My books", data: userBooks.toJSON() })
                 }
                 )
         })
@@ -125,8 +126,7 @@ router.get('/mywishlist', authenticationMiddleware(), function (req, res) {
             var userWishlist = user.related('myWishlist');
             userWishlist.fetch({ withRelated: ['book'] })
                 .then(userWishlist => {
-                    console.log(userWishlist.toJSON());
-                    res.render('mywishlist', { username: username ,title:"My wishlist",data:userWishlist.toJSON()})
+                    res.render('mywishlist', { username: username, title: "My wishlist", data: userWishlist.toJSON() })
                 }
                 )
         })
@@ -141,14 +141,23 @@ router.get('/viewresults', authenticationMiddleware(), function (req, res) {
 })
 
 router.post('/searchresults', function (req, res, next) {
-	if(req.body.search){
-        var search = body.req.search
-        console.log(search)		
-	}
-	else{
+    if (req.body.search) {
+        const searchIfISBN = req.body.search.replace(/-/g, "");
+        if (/^\d+$/.test(searchIfISBN)) {
+            Book.byISBN(req.body.search).then(book => {
+                res.render('searchresults',{books:book})
+            })
+        }
+        else{
+            Book.byAuthorOrTitle(req.body.search).then(books => {
+                console.log(books.toJSON());
+                res.render('searchresults',{books:books})
+            })
+        }
+    }
+    else {
         console.log(req.body.university)
-	}
-    res.render('searchresults')
+    }
 })
 
 module.exports = router
