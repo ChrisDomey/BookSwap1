@@ -22,11 +22,23 @@
             .modal-content {
                 background-color: #fefefe;
                 margin: auto;
-                padding: 20px;
+                padding: 35px;
                 border: 1px solid #888;
                 width: 550px;
                 /*text-align: center;*/
                 align-items: center;
+            }
+
+            .modal-type-name {
+                color: #1B4A97 !important;
+                font-size: 22px;
+                text-transform: uppercase;
+                margin-bottom: 20px;
+            }
+
+            .modal-book-title {
+                font-size: 24px;
+                color: #767676 !important;
             }
 
             /* The Close Button */
@@ -44,15 +56,13 @@
                 cursor: pointer;
             }
 
-            .close:hover,
-            .close:focus {
+            .modal-close-btn:hover,
+            .modal-close-btn:focus {
                 color: #000;
                 text-decoration: none;
                 cursor: pointer;
             }
     </style>
-
-
 
 
     <div class="form-container-mybooks">
@@ -62,25 +72,21 @@
             {{#each data}}
 
             <div class="book-block">
-                <button id="myBtn">Open Modal</button>
-
                 <div id="myModal" class="modal">
-                  
-                  <div>
-                    
                     <div class="modal-content">
                         <div class="modal-close-wrapper"><span class="modal-close-btn">&times;</span></div>
-                        <p class="wishlist-details-title">{{this.book.title}}</p>
+                        
+                        <p class="modal-type-name">$ Sold This Book</p>
+                        
+                        <span class="modal-book-title">{{this.book.title}}</span>
                         <p class="mb-30">By<span class="wishlist-details-value"> {{this.book.author}}</span></p>
-                        <p>Contact Email</p>
-                        <div class="mb-10"><input type="email" name="" value={{this.book.author}} style="border-radius: 15px; width: 200px;"></div>
-                        <button class="btn btn-primary" style="width: 60px; border-radius: 15px;">Copy</button>
+                        
+                        <span style="margin-bottom: 5px;">Comments (optional)</span>
+                        <textarea rows="4" cols="55" placeholder="Let Us Know Anything!" class="mb-20"></textarea>
+
+                        <button class="btn btn-primary modal-btn" style="min-width: 70px; border-radius: 15px; background: #1B4A97 !important; border: 1px solid #1B4A97 !important; text-transform: uppercase;">Sold</button>
                     </div>
-                  </div>
-
                 </div>
-
-
 
                 <hr style="margin-top: 25px;">
 
@@ -112,7 +118,7 @@
                     <div class="mybooks-additional">
                         <h5 class="mybooks-color1">Posted 9.13.17</h5>
                         <button type="submit" class="btn btn-lg sold-book-button soldBookBtn" id="round">$ SOLD THIS BOOK</button>
-                        <button type="submit" class="btn btn-lg sold-book-button" id="round">SWAPPED THIS BOOK</button>
+                        <button type="submit" class="btn btn-lg sold-book-button swappedBookBtn" id="round">SWAPPED THIS BOOK</button>
                         
                     </div>
                     
@@ -123,29 +129,28 @@
     </div>
 
 
-
     <script type="text/javascript">
 
         $(document).ready(function() {
             var modal = document.getElementById('myModal');
-            var btn = document.getElementsByClassName('soldBookBtn');
+            var soldBookBtn = document.getElementsByClassName('soldBookBtn');
+            var swappedBookBtn = document.getElementsByClassName('swappedBookBtn');
             var closeModalBtn = document.getElementsByClassName('modal-close-btn');
+            var modalBtn = document.getElementsByClassName('modal-btn');
 
 
-            $(btn).click(function(e){
-                // console.log($(this).closest('.book-block').find('#myModal'));
+            $(soldBookBtn).click(function(e) {
+                $(this).closest('.book-block').find('.modal-type-name').text('Sold This Book');
+                $(this).closest('.book-block').find(modalBtn).text('Sold');
                 $(this).closest('.book-block').find('#myModal').css('display', 'block');
-                // modal.style.display = "block";
-                
-                // console.log($(this).closest('.mybooks-entry').find('.mybooks-detail-title').text());
-
             });
 
+            $(swappedBookBtn).click(function(e) {
+                $(this).closest('.book-block').find('.modal-type-name').text('Swapped This Book');
+                $(this).closest('.book-block').find(modalBtn).text('Swapped');
+                $(this).closest('.book-block').find('#myModal').css('display', 'block');
+            });
 
-            // btn.onclick = function(e) {
-            //     modal.style.display = "block";
-            //     console.log($(this).closest('.mybooks-entry').find('.mybooks-detail-title').val());
-            // }
 
             $(closeModalBtn).click(function() {
                 $(this).closest('#myModal').css('display', 'none');
