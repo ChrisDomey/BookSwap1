@@ -4,6 +4,9 @@
 	margin: auto;
 }
 
+.viewresults-button-size {
+	width: 200px;
+}
 
 .viewresults-detail {
 	width: 590px;
