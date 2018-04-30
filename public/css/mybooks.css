@@ -10,6 +10,10 @@
 	display: inline-block;
 }
 
+.mybooks-button-size {
+	width: 200px;
+}
+
 .mybooks-detail {
 	width: 590px;
 	display: inline-block;
