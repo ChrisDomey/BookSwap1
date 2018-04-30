@@ -142,8 +142,7 @@ router.get('/viewresults/:ISBN', authenticationMiddleware(), function (req, res)
             var userBooks = book.related('userBooks');
             userBooks.fetch({ withRelated: ['user'] })
                 .then(userBooks => {
-                    console.log(userBooks.toJSON())
-                    res.render('viewresults', { title: "view results", userBooks: userBooks.toJSON() })
+                    res.render('viewresults', { username : req.user.username ,title: "view results", book: book.toJSON() })
                 }
                 )
         })    
@@ -159,8 +158,7 @@ router.post('/searchresults', function (req, res, next) {
         }
         else {
             Book.byAuthorOrTitle(req.body.search).then(books => {
-                console.log(books.toJSON());
-                res.render('searchresults', { books: books.toJSON() })
+                res.render('searchresults', { username : req.user.username, books: books.toJSON() })
             })
         }
     }
@@ -169,10 +167,33 @@ router.post('/searchresults', function (req, res, next) {
         const department = req.body.department
         const course = req.body.course
         University.books(university, department, course).then(books => {
-            console.log(books.toJSON())
             res.render('searchresults', { books: books.toJSON() })
         })
     }
+})
+
+router.get('/aboutus', function (req, res) {
+    res.render('aboutus', { title: 'About Us' })
+})
+
+router.get('/contactus', function (req, res) {
+    res.render('contactus', { title: 'Contact Us' })
+})
+
+router.get('/faq', function (req, res) {
+    res.render('faq', { title: 'FAQ' })
+})
+
+router.get('/howitworks', function (req, res) {
+    res.render('howitworks', { title: 'How It Works' })
+})
+
+router.get('/participatingunis', function (req, res) {
+    res.render('participatingunis', { title: 'Participating Universities' })
+})
+
+router.get('/t&c', function (req, res) {
+    res.render('t&c', { title: 'Terms & Conditions' })
 })
 
 module.exports = router
