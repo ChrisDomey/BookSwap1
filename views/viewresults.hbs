@@ -1,44 +1,47 @@
 <body class="bookswap-body-white">
 
     <div class="form-container-viewresults">
-        <h1 class="text-color2 pt-50">BOOK NAME</h1>
-        <h4 class="text-color2">Num of results</h4>
+        <h1 class="text-color2 pt-50">{{book.title}}</h1>
+        <h4 class="text-color2">{{book.userBooks.length}} {{bookNumber book.userBooks.length}}</h4>
         <div>
-            <hr style="margin-top: 25px;">
+            {{#if book.userBooks}}
+            {{#each book.userBooks}}
             <div class="mybooks-entry pb-30">
                 <div class="book-img">
                     <img class="book-img-element" src="/img/no-image-available.jpg">
                 </div>
-
                 <div class="viewresults-detail">
-                    <h2 class="viewresults-detail-title">DUMMY</h2>
-                    <h5 class="viewresults-detail-name">By <span class="viewresults-detail-value">AUTH</span></h5>
+                    <h2 class="viewresults-detail-title">{{../book.title}} 
+                    <h5 class="viewresults-detail-name">By <span class="viewresults-detail-value">{{../book.author}}</span></h5>
 
                     <div class="viewresults-detail-left pt-10">
-                        <h5 class="viewresults-detail-name">Published <span class="viewresults-detail-value">by PUB</span></h5>
-                        <h5 class="viewresults-detail-name">ISBN: <span class="viewresults-detail-value">ISBN</span></h5>
-                        <h5 class="viewresults-detail-name">Edition: <span class="viewresults-detail-value">BOOK</span></h5>
-                        <h5 class="viewresults-detail-name">Uploaded: <span class="viewresults-detail-value">6.4.2017</span></h5>
+                        <h5 class="viewresults-detail-name">Published <span class="viewresults-detail-value">{{../book.publisher}}</span></h5>
+                        <h5 class="viewresults-detail-name">ISBN: <span class="viewresults-detail-value">{{../book.ISBN}}</span></h5>
+                        <h5 class="viewresults-detail-name">Edition: <span class="viewresults-detail-value">{{../book.edition}}</span></h5>
+                        <h5 class="viewresults-detail-name">Uploaded: <span class="viewresults-detail-value">{{dateConverter this.dateUploaded}}</span></h5>
                     </div>
 
                     <div class="viewresults-detail-right pt-10">
-                        <h5 class="viewresults-detail-name">Condition: <span class="viewresults-detail-value">CON</span></h5>
-                        <h5 class="viewresults-detail-name">Binding: <span class="viewresults-detail-value">STATE</span></h5>
-                        <h5 class="viewresults-detail-name">Status: <span class="viewresults-detail-value">STAT</span></h5>
-                        <h5 class="viewresults-detail-name">Type: <span class="viewresults-detail-value">TRAN</span></h5>
+                        <h5 class="viewresults-detail-name">Condition: <span class="viewresults-detail-value">{{this.condition}}</span></h5>
+                        <h5 class="viewresults-detail-name">Binding: <span class="viewresults-detail-value">{{../book.binding}}</span></h5>
+                        <h5 class="viewresults-detail-name">Status: <span class="viewresults-detail-value">{{this.status}}</span></h5>
+                        <h5 class="viewresults-detail-name">Type: <span class="viewresults-detail-value">{{this.transaction}}</span></h5>
                     </div>
 
                 </div>
 
                 <div class="viewresults-additional">
-                    <button type="submit" class="btn btn-lg sold-book-button" id="round"> CONTACT OWNER </button>
-                    <button type="submit" class="btn btn-lg sold-book-button" id="round">VIEW THEIR BOOKS</button>
-                    <button type="submit" class="btn btn-lg sold-book-button" id="round">+ ADD TO WISHLIST</button>
-                    <!-- <button type="submit" class="btn btn-lg mybooks-color1 view-result-btn" id="round">VIEW RESULTS > </button>
-                    <button type="submit" class="btn btn-lg mybooks-color2" style="float: right;"><h1> X </h1></button> -->
+                    <button type="submit" class="btn btn-lg blue-btn viewresults-button-size" id="round"> CONTACT OWNER </button>
+                    <button type="submit" class="btn btn-lg sold-book-button viewresults-button-size" id="round">VIEW THEIR BOOKS</button>
                 </div>
-                
             </div>
+            {{#if (line book.userBooks.length)}}
+            <hr style="margin-bottom: 25px;">
+            {{/if}}
+            {{/each}}
+            {{else}}
+            <h1>No results found</h1>
+            {{/if}}
         </div>
     </div>
 </body>
