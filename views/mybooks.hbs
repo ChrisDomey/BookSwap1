@@ -103,7 +103,7 @@
                             <h5 class="mybooks-detail-name">Published <span class="mybooks-detail-value">by {{this.book.publisher}}</span></h5>
                             <h5 class="mybooks-detail-name">ISBN: <span class="mybooks-detail-value">{{this.ISBN}}</span></h5>
                             <h5 class="mybooks-detail-name">Edition: <span class="mybooks-detail-value">{{this.book.edition}}</span></h5>
-                            <h5 class="mybooks-detail-name">Uploaded: <span class="mybooks-detail-value">6.4.2017</span></h5>
+                            <h5 class="mybooks-detail-name">Uploaded: <span class="mybooks-detail-value">{{dateConverter this.dateUploaded}}</span></h5>
                         </div>
 
                         <div class="mybooks-detail-right pt-10">
@@ -117,8 +117,8 @@
 
                     <div class="mybooks-additional">
                         <h5 class="mybooks-color1">Posted 9.13.17</h5>
-                        <button type="submit" class="btn btn-lg sold-book-button soldBookBtn" id="round">$ SOLD THIS BOOK</button>
-                        <button type="submit" class="btn btn-lg sold-book-button swappedBookBtn" id="round">SWAPPED THIS BOOK</button>
+                        <button type="submit" class="btn btn-lg sold-book-button soldBookBtn mybooks-button-size" id="round">$ SOLD THIS BOOK</button>
+                        <button type="submit" class="btn btn-lg sold-book-button swappedBookBtn mybooks-button-size" id="round">SWAPPED THIS BOOK</button>
                         
                     </div>
                     
