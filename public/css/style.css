@@ -70,6 +70,8 @@ td {
 }
 
 
+/* Hamburger Menu Icon styling */
+
 .icon {
   position: absolute;
   top: -11px; right: -34%;
@@ -121,19 +123,23 @@ td {
 }
 
 
+
+/* Hamburger / Side Bar Menu styling */
 .side-bar {
   display: block;
-  width: 0;
-  position: absolute; right: 0;
+  width: 320px;
+  position: absolute; 
+  right: -320px;
   background: #fff;
-  transition: width .4s;
+  transition: right .4s;
   z-index: 1;
   border: 1px solid #1B4A97;
   border-bottom: none !important;
+  /*overflow-x: hidden;*/
 }
 
 .side-bar-active {
-  width: 300px !important;
+  right: 0 !important;
   transition: right .4s;
 }
 
@@ -153,6 +159,17 @@ td {
 
 
 
+.hero-img-block {
+  margin: 50px auto; padding-bottom: 40px;
+}
+
+.hero-img-element {
+  display: inline-block; width: 26%; margin: 0 3.57%; padding: 0px; border: 1px solid #fff;
+}
+
+.hero-img-element:hover {
+  opacity: 0.8;
+}
 
 
 .body-logo {
@@ -179,10 +196,12 @@ td {
 
 .bookswap-body {
   background-color: #004F8B;
+  overflow-x: hidden;
  }
 
 .bookswap-body-white{
-  background-color: #F1F1F1
+  background-color: #F1F1F1;
+  overflow-x: hidden;
 }
 
 .title {
@@ -197,6 +216,9 @@ td {
   text-align: center;
 }
 
+.lowercase {
+  text-transform: lowercase;
+}
 .font300 {
   font-weight: 300 !important;
 }
@@ -210,10 +232,17 @@ td {
 	font-size: 14px !important;
 }
 
+.block-element {
+  display: block;
+}
+
 .inline-block {
 	display: inline-block;
 }
 
+.width100 {
+  width: 100%;
+}
 .width170 {
   width: 170px !important;
 }
@@ -353,6 +382,9 @@ input:-webkit-autofill {
 }
 .pb-30 {
   padding-bottom: 30px !important;
+}
+.pb-40 {
+  padding-bottom: 40px !important;
 }
 .pb-50 {
   padding-bottom: 50px !important;

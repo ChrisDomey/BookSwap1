@@ -1,5 +1,42 @@
 <header>
     {{#if isAuthenticated}}
+
+    <style>
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 68px;
+            right: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: width 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: width 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+    </style>
+
     <div class="topnav">
         
         <div class="leftalign">
@@ -19,6 +56,26 @@
                 </div>
             </div>
         </div>
+
+<!--        <div id="mySidenav" class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav1()">&times;</a>
+          <a href="#" style="font-size: 17px">Participating Universities</a>
+          <a href="#" style="font-size: 17px">Participating Universities</a>
+          <a href="#" style="font-size: 17px">Participating Universities</a>
+          <a href="#" style="font-size: 17px">Participating Universities</a>
+        </div>
+
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+
+         <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+        </script> -->
 
         <div class="side-bar">
             <div class="side-bar-item"><a href="/mywishlist" class="text-color">Wish List</a></div>

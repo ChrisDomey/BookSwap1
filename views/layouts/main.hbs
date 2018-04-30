@@ -13,13 +13,14 @@
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
         
         <script type="text/javascript">
-            $(document).ready(function(){
-                $('.icon').click(function(){
-                    $('.icon').toggleClass('active');
-                    $('.side-bar').toggleClass('side-bar-active')
-                })
 
-            })
+            $(document).ready(function(){
+                $('.icon').click(function(e){
+                    $('.icon').toggleClass('active');
+                    $('.side-bar').toggleClass('side-bar-active');
+                });
+            });
+
         </script>
 
 
