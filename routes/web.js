@@ -192,8 +192,8 @@ router.get('/participatingunis', function (req, res) {
     res.render('participatingunis', { title: 'Participating Universities' })
 })
 
-router.get('/t&c', function (req, res) {
-    res.render('t&c', { title: 'Terms & Conditions' })
+router.get('/tc', function (req, res) {
+    res.render('tc', { title: 'Terms & Conditions' })
 })
 
 module.exports = router
