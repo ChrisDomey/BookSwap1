@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
         t.string('condition').notNull();
         t.string('pictures').notNull();
         t.date('availableDate').notNull();
-        t.enum('transaction',['sell','swap']);
+        t.enum('transaction',['both','sell','swap']);
         t.enum('flag',['current','expired']);
         t.enum('status',['available','sold','swapped']);
     });

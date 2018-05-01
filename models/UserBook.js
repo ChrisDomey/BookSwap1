@@ -9,7 +9,13 @@ const UserBook = bookshelf.Model.extend({
     book: function () {
         return this.belongsTo('Book', 'ISBN', 'ISBN');
     }
-})
+},
+    {
+        create: function (data) {
+            return this.forge(data).save()
+        }
+    }
+)
 
 
 module.exports = bookshelf.model('UserBook', UserBook);

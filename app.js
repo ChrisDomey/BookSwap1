@@ -33,7 +33,7 @@ const hbs = exphbs.create({
     defaultLayout: 'main',
     helpers: {
         bookNumber(a) {
-            if (a > 1) return "Books"
+            if (a===1) return "Books"
             return "Book"
         },
         dateConverter(date){
@@ -48,6 +48,10 @@ const hbs = exphbs.create({
         },
         secondHeader(url){
             return url.includes("searchresults") || url.includes("viewresults")
+        },
+        availableDate(){
+            const a =dateformat(new Date(),"yyyy-mm-dd")
+            return a
         }
     }
 })
