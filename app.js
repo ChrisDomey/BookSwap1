@@ -26,6 +26,7 @@ const KnexSessionStore = require('connect-session-knex')(session);
 
 const store = new KnexSessionStore({ knex: knex });
 
+
 // view engine setup
 const hbs = exphbs.create({
     extname: '.hbs',
@@ -44,6 +45,9 @@ const hbs = exphbs.create({
         },
         toJSON(object) {
             return JSON.stringify(object)
+        },
+        secondHeader(url){
+            return url.includes("searchresults") || url.includes("viewresults")
         }
     }
 })
@@ -76,6 +80,11 @@ app.use(passport.session());
 app.use(function(req, res, next){
     res.locals.isAuthenticated=req.isAuthenticated();
     next();
+})
+
+app.use((req,res,next)=>{
+    res.locals.url=req.originalUrl;
+    next()
 })
 
 app.use('/', routes)
