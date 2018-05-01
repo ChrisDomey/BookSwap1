@@ -33,7 +33,7 @@ const hbs = exphbs.create({
     defaultLayout: 'main',
     helpers: {
         bookNumber(a) {
-            if (a > 1) return "Books"
+            if (a===1) return "Books"
             return "Book"
         },
         dateConverter(date){
