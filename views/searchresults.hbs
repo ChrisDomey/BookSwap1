@@ -1,39 +1,41 @@
 <body class="bookswap-body-white">
 
-	<div class="form-container-wishlist">
-	    <h1 class="text-color2 pt-50">SEARCH name, (number of results)</h1>   
+	<div class="form-container-searchresults">
+	    <h1 class="text-color2 pt-50">"SEARCH name" ({{books.length}} Books)</h1>   
 	    <div>
-	        <hr>
-
-	        <div class="wishlist-entry pb-30">
+			{{#each books}}
+	        <div class="searchresults-entry pb-30">
 	        	<div class="book-img">
 	        		<img class="book-img-element" src="img/no-image-available.jpg">
 	        	</div>
 
-				<div class="wishlist-details">
-					<h2 class="wishlist-details-title"title></h2>
-					<h5 class="wishlist-details-name">By <span class="wishlist-details-value">author</span></h5>
+				<div class="searchresults-details">
+					<h2 class="searchresults-details-title">{{this.title}}</h2>
+					<h5 class="searchresults-details-name">By <span class="searchresults-details-value">{{this.author}}</span></h5>
 
-					<div class="wishlist-details-left">
-						<h5 class="wishlist-details-name">Most Recently uploaded: <span class="wishlist-details-value">date</span></h5>
-						<h5 class="wishlist-details-name">Best condition: <span class="wishlist-details-value">Good</span></h5>
+					<div class="searchresults-details-left">
+						<h5 class="searchresults-details-name">Most Recently uploaded: <span class="searchresults-details-value">date</span></h5>
+						<h5 class="searchresults-details-name">Best condition: <span class="searchresults-details-value">Good</span></h5>
 					</div>
 
-					<div class="wishlist-details-right">
-						<h5 class="wishlist-details-name">Binding: <span class="wishlist-details-value">hardcover</span></h5>
-						<h5 class="wishlist-details-name">Closest Distance: <span class="wishlist-details-value">(3 miles) NJIT</span></h5>
+					<div class="searchresults-details-right">
+						<h5 class="searchresults-details-name">Binding: <span class="searchresults-details-value">hardcover</span></h5>
+						<h5 class="searchresults-details-name">Closest Distance: <span class="searchresults-details-value">(3 miles) NJIT</span></h5>
 					</div>
 				</div>
 
-				<div class="wishlist-additional">
-					<form action="/viewresults/{{books.ISBN}}">
-						<button type="submit" class="btn btn-lg view-result-btn ml-30" id="round">VIEW RESULTS > </button>
+				<div class="searchresults-additional">
+					<form action="/viewresults/{{this.ISBN}}">
+						<button type="submit" class="btn btn-lg view-result-btn searchresults-button-size blue-btn" id="round">VIEW RESULTS > </button>
 					</form>
+					<button type="submit" class="btn btn-lg sold-book-button searchresults-button-size" id="round">+ ADD TO WISHLIST</button>
 					<form>
-						<button type="submit" class="btn btn-lg wishlist-delete-entry">X</button>
+						<button type="submit" class="btn btn-lg searchresults-delete-entry">X</button>
 					</form>
 				</div>
 	        </div>
+			<hr style="margin-bottom: 25px;">
+			{{/each}}
 	    </div>
 	</div>
 

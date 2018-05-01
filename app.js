@@ -10,6 +10,7 @@ const exphbs = require('express-handlebars')
 const knexfile = require('./knexfile')
 const knex = require('knex')(knexfile)
 const User = require('./models/User')
+const dateformat = require('dateformat')
 
 if (config.useEnv) require('dotenv-safe').load() // Must load as early as possible
 
@@ -30,9 +31,16 @@ const hbs = exphbs.create({
     extname: '.hbs',
     defaultLayout: 'main',
     helpers: {
-        ifeq(a, b, options) {
-            if (a === b) return options.fn(this)
-            return options.inverse(this)
+        bookNumber(a) {
+            if (a > 1) return "Books"
+            return "Book"
+        },
+        dateConverter(date){
+            return dateformat(date,"m.d.yy")
+        },
+        line(number) {
+            if(number > 1) return true
+            return false
         },
         toJSON(object) {
             return JSON.stringify(object)
@@ -111,7 +119,7 @@ app.use((req, res, next) => {
 })
 
 // error handler
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
     // set locals, only providing error in development
     res.locals.message = err.message
     res.locals.error = req.app.get('env') === 'development' ? err : {}
