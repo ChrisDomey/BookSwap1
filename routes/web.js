@@ -3,6 +3,7 @@ const router = express.Router()
 const expressValidator = require('express-validator')
 const User = require('../models/User')
 const UserBook = require('../models/UserBook')
+const UserWishlist = require('../models/UserWishlist')
 const Book = require('../models/Book')
 const University = require('../models/University')
 const bcrypt = require('bcrypt')
@@ -113,7 +114,7 @@ router.get('/userbooks/:username', authenticationMiddleware(), function (req, re
             var userBooks = user.related('myBooks');
             userBooks.fetch({ withRelated: ['book'] })
                 .then(userBooks => {
-                    res.render('mybooks', { title: "My books", data: userBooks.toJSON() })
+                    res.render('mybooks', {username:req.username, title: "My books", data: userBooks.toJSON() })
                 }
                 )
         })
@@ -133,7 +134,32 @@ router.get('/mywishlist', authenticationMiddleware(), function (req, res) {
 })
 
 router.get('/postbook', authenticationMiddleware(), function (req, res) {
-    res.render('postbook')
+    if(req.query.ISBNbook){
+        Book.byISBN(req.query.ISBNbook).then(book=>{
+            res.render('postbook',{username:req.username,book:book.toJSON()})
+        })
+    }
+    else{
+        res.render('postbook',{username:req.username,})
+    }
+})
+
+router.post('/postbook', authenticationMiddleware(), function (req, res) {
+    const data ={
+        username:req.user.username,
+        ISBN:req.body.ISBN,
+        dateUploaded:new Date(),
+        condition: req.body.condition,
+        pictures:"no-image-available.jpg",
+        availableDate: req.body.availableDate,
+        transaction: req.body.transaction,
+        flag:"current",
+        status: "available"
+    }
+    console.log(data)
+    UserBook.create(data).then(book=>{
+        res.redirect('/userbooks:'+req.user.username)
+    })
 })
 
 router.get('/viewresults/:ISBN', authenticationMiddleware(), function (req, res) {
@@ -167,7 +193,7 @@ router.post('/searchresults', function (req, res, next) {
         const department = req.body.department
         const course = req.body.course
         University.books(university, department, course).then(books => {
-            res.render('searchresults', { books: books.toJSON() })
+            res.render('searchresults', {username:req.username, books: books.toJSON() })
         })
     }
 })

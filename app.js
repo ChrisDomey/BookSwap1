@@ -48,6 +48,10 @@ const hbs = exphbs.create({
         },
         secondHeader(url){
             return url.includes("searchresults") || url.includes("viewresults")
+        },
+        availableDate(){
+            const a =dateformat(new Date(),"yyyy-mm-dd")
+            return a
         }
     }
 })
