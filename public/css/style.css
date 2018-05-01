@@ -179,6 +179,7 @@ td {
 }
 
 
+
 .body-logo {
   width: 280px; 
 }
@@ -455,3 +456,20 @@ input#login::placeholder {
 ::-ms-input-placeholder { /* Microsoft Edge */
    color: rgb(0, 79, 139);
   }
+
+
+
+.tc-container {
+	max-width: 960px;
+	margin: auto;
+}
+
+.tc-container h2 {
+	padding: 10px 10px 10px 0;
+    margin: 0;
+}
+
+.tc-container p {
+	padding: 0 0 25px 0;
+	font-size: 14px;
+}

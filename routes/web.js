@@ -153,7 +153,7 @@ router.post('/searchresults', function (req, res, next) {
         const searchIfISBN = req.body.search.replace(/-/g, "");
         if (/^\d+$/.test(searchIfISBN)) {
             Book.byISBN(req.body.search).then(book => {
-                res.render('searchresults', { books: book.toJSON() })
+                res.render('searchresults', {username: req.user.username, books: book.toJSON() })
             })
         }
         else {
