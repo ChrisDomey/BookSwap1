@@ -140,7 +140,7 @@ router.get('/postbook', authenticationMiddleware(), function (req, res) {
         })
     }
     else{
-        res.render('postbook',{username:req.username,})
+        res.render('postbook',{username:req.user.username,})
     }
 })
 
@@ -158,7 +158,7 @@ router.post('/postbook', authenticationMiddleware(), function (req, res) {
     }
     console.log(data)
     UserBook.create(data).then(book=>{
-        res.redirect('/userbooks:'+req.user.username)
+        res.redirect('/userbooks/'+req.user.username)
     })
 })
 
