@@ -12,7 +12,7 @@ const Book = bookshelf.Model.extend({
 },
     {
         byISBN: function (ISBN) {
-            return this.forge().query({ where: { ISBN: ISBN } }).fetch();
+            return this.forge().query({ where: { ISBN: ISBN } }).fetchAll();
         },
         byAuthorOrTitle: function (authorOrTitle) {
             return this.query(function(qb) {
