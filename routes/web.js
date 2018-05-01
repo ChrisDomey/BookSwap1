@@ -174,12 +174,12 @@ router.get('/viewresults/:ISBN', authenticationMiddleware(), function (req, res)
         })    
 })
 
-router.post('/searchresults', function (req, res, next) {
-    if (req.body.search) {
-        const searchIfISBN = req.body.search.replace(/-/g, "");
+router.get('/searchresults', function (req, res, next) {
+    if (req.query.search) {
+        const searchIfISBN = req.query.search.replace(/-/g, "");
         if (/^\d+$/.test(searchIfISBN)) {
-            Book.byISBN(req.body.search).then(book => {
-                res.render('searchresults', {username: req.user.username, books: book.toJSON() })
+            Book.byISBN(req.query.search).then(book => {
+                res.render('searchresults', {username: req.user.username, search:req.query.search,books: book.toJSON() })
             })
         }
         else {
