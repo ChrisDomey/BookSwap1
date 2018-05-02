@@ -255,6 +255,10 @@ td {
   width: 170px !important;
 }
 
+.width185 {
+  width: 185px !important;
+}
+
 .width240 {
   width: 240px !important;
 }
@@ -407,6 +411,9 @@ input:-webkit-autofill {
 }
 
 
+.mt-80 {
+  margin-top: 80px !important;
+}
 .mb-10 {
   margin-bottom: 10px !important;
 }
@@ -418,6 +425,12 @@ input:-webkit-autofill {
 }
 .ml-30 {
   margin-left: 30px !important;
+}
+.mb-40 {
+  margin-bottom: 40px !important;
+}
+.mb-50 {
+  margin-bottom: 50px !important;
 }
 
 
@@ -455,7 +468,7 @@ input#login::placeholder {
 
 ::-ms-input-placeholder { /* Microsoft Edge */
    color: rgb(0, 79, 139);
-  }
+}
 
 
 
