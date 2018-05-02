@@ -122,6 +122,7 @@ router.get('/userbooks/:username', authenticationMiddleware(), function (req, re
 
 router.get('/mywishlist', authenticationMiddleware(), function (req, res) {
     const username = req.user.username
+    console.log(username)
     User.forge({ username: username }).fetch({ withRelated: ['myWishlist'] })
         .then(user => {
             var userWishlist = user.related('myWishlist');
@@ -192,18 +193,24 @@ router.get('/searchresults', function (req, res, next) {
         const university = req.query.university
         const department = req.query.department
         const course = req.query.course
-        University.books(university, department, course).then(books => {
+        University.search(university, department, course).then(universities => {
+            const univ = universities.toJSON()
+            var books={}
+            for (var i = 0; i < univ.length; i++){
+                book=univ[i].book
+                books[i]=book
+            }
             res.render('searchresults', {
                 university: req.query.university,
                 department: req.query.department,
-                course: req.query.course, books: books.toJSON()
+                course: req.query.course, books: books
             })
         })
     }
 })
 
 router.post('/searchresults', function (req, res) {
-    UserWishlist.create({ISBN:req.body.Wishlist}).then(body=>{
+    UserWishlist.create({username:req.user.username,ISBN:req.body.Wishlist}).then(body=>{
         res.redirect('mywishlist')
     })
 })

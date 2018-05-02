@@ -87,7 +87,9 @@ app.use(function(req, res, next){
 })
 
 app.use((req,res,next)=>{
-    app.locals.username = req.user.username
+    if(req.user){
+        app.locals.username = req.user.username
+    }
     res.locals.url=req.originalUrl;
     next()
 })
