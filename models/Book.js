@@ -8,6 +8,9 @@ const Book = bookshelf.Model.extend({
     },
     userWishlist: function () {
         return this.hasMany('UserWishlist', 'ISBN', 'ISBN')
+    },
+    universities: function () {
+        return this.hasMany('University', 'ISBN', 'ISBN');
     }
 },
     {

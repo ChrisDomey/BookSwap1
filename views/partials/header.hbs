@@ -68,7 +68,7 @@
             <a class="two" href="/participatingunis"><div class="side-bar-item">Participating Universities</div></a>
             <a class="two" href="/contactus"><div class="side-bar-item">Contact Us</div></a>
             <a class="two" href="/aboutus"><div class="side-bar-item">About Us</div></a>
-            <a class="two" href="/t&c"><div class="side-bar-item">Terms & Conditions</div></a>
+            <a class="two" href="/tc"><div class="side-bar-item">Terms & Conditions</div></a>
             <a class="two" href="/logout" class="text-color"><div class="side-bar-item">Sign Out</div></a>
         </div>
 
@@ -99,7 +99,7 @@
                         <form method="GET" action="/searchresults">
                             <td>
                                 <div class="input-group input-group-lg">
-                                    <input type="text" class="form-control input-lg text-center width240 index" {{#if university}}value={{university}}{{/if}} required name="university" id="round" placeholder="College or University">
+                                    <input type="text" class="form-control input-lg text-center width240 index" {{#if university}}value='{{university}}'{{/if}} required name="university" id="round" placeholder="College or University">
                                 </div>
                             </td>
                             <td>
