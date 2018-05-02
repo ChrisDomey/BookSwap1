@@ -28,7 +28,11 @@
 					<form action="/viewresults/{{this.ISBN}}">
 						<button type="submit" class="btn btn-lg view-result-btn searchresults-button-size blue-btn" id="round">VIEW RESULTS > </button>
 					</form>
-					<button type="submit" class="btn btn-lg sold-book-button searchresults-button-size" id="round">+ ADD TO WISHLIST</button>
+
+					<form action="/searchresults" method="POST">
+						<button type="submit" name='Wishlist' value={{this.ISBN}} class="btn btn-lg sold-book-button searchresults-button-size" id="round">+ ADD TO WISHLIST</button>
+					</form>
+
 				</div>
 	        </div>
 			<hr style="margin-bottom: 25px;">

@@ -96,20 +96,20 @@
                         <td>
                             <div class="text-color">Or</div>
                         </td>
-                        <form method="POST" action="/searchresults">
+                        <form method="GET" action="/searchresults">
                             <td>
                                 <div class="input-group input-group-lg">
-                                    <input type="text" class="form-control input-lg text-center width240 index" required name="university" id="round" placeholder="College or University">
+                                    <input type="text" class="form-control input-lg text-center width240 index" {{#if university}}value={{university}}{{/if}} required name="university" id="round" placeholder="College or University">
                                 </div>
                             </td>
                             <td>
                                 <div class="input-group input-group-lg">
-                                    <input type="text" class="form-control input-lg text-center width240 index" required name="department" id="round" placeholder="Subject or Department">
+                                    <input type="text" class="form-control input-lg text-center width240 index" {{#if department}}value={{department}}{{/if}} required name="department" id="round" placeholder="Subject or Department">
                                 </div>
                             </td>
                             <td>
                                 <div class="input-group-lg" style="display: table;">
-                                    <input type="text" class="form-control text-center width170 index" required name="course" id="round-inputleft" placeholder="Course or Course Number">
+                                    <input type="text" class="form-control text-center width170 index" {{#if course}}value={{course}}{{/if}} required name="course" id="round-inputleft" placeholder="Course or Course Number">
                                         <span class="input-group-btn">
                                             <button class="btn btn-default btn-lg" id="round-inputright" type="submit">
                                                 <span class="glyphicon glyphicon-search" id="search-dimension" aria-hidden="true"></span>

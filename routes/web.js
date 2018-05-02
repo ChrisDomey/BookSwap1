@@ -114,7 +114,7 @@ router.get('/userbooks/:username', authenticationMiddleware(), function (req, re
             var userBooks = user.related('myBooks');
             userBooks.fetch({ withRelated: ['book'] })
                 .then(userBooks => {
-                    res.render('mybooks', {username:req.username, title: "My books", data: userBooks.toJSON() })
+                    res.render('mybooks', { username: req.username, title: "My books", data: userBooks.toJSON() })
                 }
                 )
         })
@@ -134,31 +134,31 @@ router.get('/mywishlist', authenticationMiddleware(), function (req, res) {
 })
 
 router.get('/postbook', authenticationMiddleware(), function (req, res) {
-    if(req.query.ISBNbook){
-        Book.byISBN(req.query.ISBNbook).then(book=>{
-            res.render('postbook',{username:req.username,book:book.toJSON()})
+    if (req.query.ISBNbook) {
+        Book.byISBN(req.query.ISBNbook).then(book => {
+            res.render('postbook', { username: req.username, book: book.toJSON() })
         })
     }
-    else{
-        res.render('postbook',{username:req.user.username,})
+    else {
+        res.render('postbook', { username: req.user.username, })
     }
 })
 
 router.post('/postbook', authenticationMiddleware(), function (req, res) {
-    const data ={
-        username:req.user.username,
-        ISBN:req.body.ISBN,
-        dateUploaded:new Date(),
+    const data = {
+        username: req.user.username,
+        ISBN: req.body.ISBN,
+        dateUploaded: new Date(),
         condition: req.body.condition,
-        pictures:"no-image-available.jpg",
+        pictures: "no-image-available.jpg",
         availableDate: req.body.availableDate,
         transaction: req.body.transaction,
-        flag:"current",
+        flag: "current",
         status: "available"
     }
     console.log(data)
-    UserBook.create(data).then(book=>{
-        res.redirect('/userbooks/'+req.user.username)
+    UserBook.create(data).then(book => {
+        res.redirect('/userbooks/' + req.user.username)
     })
 })
 
@@ -168,10 +168,10 @@ router.get('/viewresults/:ISBN', authenticationMiddleware(), function (req, res)
             var userBooks = book.related('userBooks');
             userBooks.fetch({ withRelated: ['user'] })
                 .then(userBooks => {
-                    res.render('viewresults', { username : req.user.username ,title: "view results", book: book.toJSON() })
+                    res.render('viewresults', { username: req.user.username, title: "view results", book: book.toJSON() })
                 }
                 )
-        })    
+        })
 })
 
 router.get('/searchresults', function (req, res, next) {
@@ -179,23 +179,33 @@ router.get('/searchresults', function (req, res, next) {
         const searchIfISBN = req.query.search.replace(/-/g, "");
         if (/^\d+$/.test(searchIfISBN)) {
             Book.byISBN(req.query.search).then(book => {
-                res.render('searchresults', {username: req.user.username, search:req.query.search,books: book.toJSON() })
+                res.render('searchresults', { username: req.user.username, search: req.query.search, books: book.toJSON() })
             })
         }
         else {
-            Book.byAuthorOrTitle(req.body.search).then(books => {
-                res.render('searchresults', { username : req.user.username, books: books.toJSON() })
+            Book.byAuthorOrTitle(req.query.search).then(books => {
+                res.render('searchresults', { username: req.user.username, search: req.query.search, books: books.toJSON() })
             })
         }
     }
     else {
-        const university = req.body.university
-        const department = req.body.department
-        const course = req.body.course
+        const university = req.query.university
+        const department = req.query.department
+        const course = req.query.course
         University.books(university, department, course).then(books => {
-            res.render('searchresults', {username:req.username, books: books.toJSON() })
+            res.render('searchresults', {
+                username: req.username, university: req.query.university,
+                department: req.query.department,
+                course: req.query.course, books: books.toJSON()
+            })
         })
     }
+})
+
+router.post('/searchresults', function (req, res) {
+    UserWishlist.create({username:req.user.username, ISBN:req.body.Wishlist}).then(body=>{
+        res.redirect('mywishlist')
+    })
 })
 
 router.get('/aboutus', function (req, res) {

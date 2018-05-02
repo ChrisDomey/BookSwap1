@@ -23,12 +23,11 @@
                     </div>
                     <div class="postbook-detail-middle pt-10">
                         <h3 class="postbook-detail-heading">Transaction type</h3>
-                        <input type="radio" name="transaction" value="both" class="postbook-detail-name"> Both
+                        <input type="radio" name="transaction" value="both" class="postbook-details-name"> Both
                         <br>
-                        <input type="radio" name="transaction" value="swap" class="postbook-detail-name"> Trade
+                        <input type="radio" name="transaction" value="swap" class="postbook-details-name"> Trade
                         <br>
-                        <input type="radio" name="transaction" value="sell" class="postbook-detail-name"> Sell
-                        <br>
+                        <input type="radio" name="transaction" value="sell" class="postbook-details-name"> Sell
                     </div>
                     <div class="postbook-detail-right pt-10">
                         <h3 class="postbook-detail-heading">Available on</h3>
@@ -36,11 +35,43 @@
                     <div>
                         <input type="date" value={{availableDate}} name="availableDate">
                     </div>
-                    
-                    {{book.0.title}}
-                    {{#if book}}<input type="hidden" name='ISBN' value={{book.0.ISBN}}><input type="submit" value="Post">{{/if}}
                 </div>
             </form>
+                    
+            {{#if book}}
+            <div class="form-container-postbook">
+                <h1 class="text-color2 pt-50">Book Found</h1> 
+                <div>
+                    <hr>
+
+                    <div class="wishlist-entry pb-30" style="width: 960px;">
+    	                <div class="book-img" style="height: 124px; width: 115px; position: relative;">
+    		                <img class="book-img-element" src="img/no-image-available.jpg" style="position: absolute; top: 5px;">
+    	                </div>
+
+                        <div class="postbook-details" style="width:590px; display: inline-block;">
+                            <p class="postbook-details-title">{{book.0.title}}</p>
+                            <p class="postbook-details-name">By <span class="postbook-details-value">{{book.0.author}}</span></p>
+			                
+                            <div class="postbook-detail-left">
+                                <p class="postbook-details-name">Published <span class="postbook-details-value">by {{book.0.publisher}}</span></p>
+                                <p class="postbook-details-name">ISBN: <span class="postbook-details-value">{{book.0.ISBN}}</span></p>
+            	            </div>
+
+			                <div class="postbook-details-right">
+				                <p class="postbook-details-name">Edition: <span class="postbook-details-value">{{book.0.edition}}</span></p>
+				                <p class="postbook-details-name">Binding: <span class="postbook-details-value">{{book.0.binding}}</span></p>
+			                </div>
+		                </div>
+
+		                <div class="postbook-additional">
+                            <input type="hidden" name='ISBN' value={{book.0.ISBN}}><input type="submit" class="btn btn-lg blue-btn viewresults-button-size" value="POST TO MY BOOKS">
+		                </div>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+
         </div>
     </div>
 </body>

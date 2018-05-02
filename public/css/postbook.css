@@ -1,6 +1,6 @@
 .form-container-postbook {
 	font-size: 14px;
-	max-width: 960px;
+	max-width: 1050px;
 	margin: auto;
 }
 
@@ -34,6 +34,10 @@
 	height: 110px;
 }
 
+.postbook-details p {
+	margin: 0 !important;
+}
+
 .postbook-additional {
 	width: 240px;
 	display: inline-block;
@@ -60,7 +64,16 @@
 	color: #1B4A97 !important;
 }
 
-.postbook-detail-name {
+.postbook-details-name {
 	color: #4F4F4F !important;
 	font-size: 14px;
+}
+
+.postbook-details-title {
+	color: #1B4A97 !important;
+	font-size: 22px; 
+}
+
+.postbook-details-value {
+	color: #767676 !important;
 }
