@@ -17,7 +17,7 @@ const path = require('path')
 router.get('/', authenticationMiddleware(), async (req, res) => {
     // const user = await User.where('id', 1).fetch()
     // const username = user.get('username')
-    res.render('index', { username: req.user.username })
+    res.render('index')
 })
 
 router.get('/register', function (req, res) {
@@ -114,7 +114,7 @@ router.get('/userbooks/:username', authenticationMiddleware(), function (req, re
             var userBooks = user.related('myBooks');
             userBooks.fetch({ withRelated: ['book'] })
                 .then(userBooks => {
-                    res.render('mybooks', { username: req.username, title: "My books", data: userBooks.toJSON() })
+                    res.render('mybooks', {title: "My books", data: userBooks.toJSON() })
                 }
                 )
         })
@@ -127,7 +127,7 @@ router.get('/mywishlist', authenticationMiddleware(), function (req, res) {
             var userWishlist = user.related('myWishlist');
             userWishlist.fetch({ withRelated: ['book'] })
                 .then(userWishlist => {
-                    res.render('mywishlist', { username: username, title: "My wishlist", data: userWishlist.toJSON() })
+                    res.render('mywishlist', {title: "My wishlist", data: userWishlist.toJSON() })
                 }
                 )
         })
@@ -136,11 +136,11 @@ router.get('/mywishlist', authenticationMiddleware(), function (req, res) {
 router.get('/postbook', authenticationMiddleware(), function (req, res) {
     if (req.query.ISBNbook) {
         Book.byISBN(req.query.ISBNbook).then(book => {
-            res.render('postbook', { username: req.username, book: book.toJSON() })
+            res.render('postbook', { book: book.toJSON() })
         })
     }
     else {
-        res.render('postbook', { username: req.user.username, })
+        res.render('postbook')
     }
 })
 
@@ -168,7 +168,7 @@ router.get('/viewresults/:ISBN', authenticationMiddleware(), function (req, res)
             var userBooks = book.related('userBooks');
             userBooks.fetch({ withRelated: ['user'] })
                 .then(userBooks => {
-                    res.render('viewresults', { username: req.user.username, title: "view results", book: book.toJSON() })
+                    res.render('viewresults', {title: "view results", book: book.toJSON() })
                 }
                 )
         })
@@ -179,12 +179,12 @@ router.get('/searchresults', function (req, res, next) {
         const searchIfISBN = req.query.search.replace(/-/g, "");
         if (/^\d+$/.test(searchIfISBN)) {
             Book.byISBN(req.query.search).then(book => {
-                res.render('searchresults', { username: req.user.username, search: req.query.search, books: book.toJSON() })
+                res.render('searchresults', {search: req.query.search, books: book.toJSON() })
             })
         }
         else {
             Book.byAuthorOrTitle(req.query.search).then(books => {
-                res.render('searchresults', { username: req.user.username, search: req.query.search, books: books.toJSON() })
+                res.render('searchresults', { search: req.query.search, books: books.toJSON() })
             })
         }
     }
@@ -194,7 +194,7 @@ router.get('/searchresults', function (req, res, next) {
         const course = req.query.course
         University.books(university, department, course).then(books => {
             res.render('searchresults', {
-                username: req.username, university: req.query.university,
+                university: req.query.university,
                 department: req.query.department,
                 course: req.query.course, books: books.toJSON()
             })
@@ -203,7 +203,7 @@ router.get('/searchresults', function (req, res, next) {
 })
 
 router.post('/searchresults', function (req, res) {
-    UserWishlist.create({username:req.user.username, ISBN:req.body.Wishlist}).then(body=>{
+    UserWishlist.create({ISBN:req.body.Wishlist}).then(body=>{
         res.redirect('mywishlist')
     })
 })
