@@ -114,7 +114,7 @@ router.get('/userbooks/:username', authenticationMiddleware(), function (req, re
             var userBooks = user.related('myBooks');
             userBooks.fetch({ withRelated: ['book'] })
                 .then(userBooks => {
-                    res.render('mybooks', { title: "My books", data: userBooks.toJSON() })
+                    res.render('userbooks', { title: "My books", data: userBooks.toJSON() })
                 }
                 )
         })

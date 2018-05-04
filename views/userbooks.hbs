@@ -155,9 +155,10 @@
 
                     <div class="mybooks-additional">
                         <h5 class="mybooks-color1">Posted 9.13.17</h5>
+                        {{#if (eq this.username ../username)}}
                         <button type="submit" class="btn btn-lg sold-book-button soldBookBtn mybooks-button-size" id="round">$ SOLD THIS BOOK</button>
                         <button type="submit" class="btn btn-lg sold-book-button swappedBookBtn mybooks-button-size" id="round">SWAPPED THIS BOOK</button>
-
+                        {{/if}}
                     </div>
 
                 </div>

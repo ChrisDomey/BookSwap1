@@ -52,6 +52,9 @@ const hbs = exphbs.create({
         availableDate(){
             const a =dateformat(new Date(),"yyyy-mm-dd")
             return a
+        },
+        eq(a,b){
+            return(a===b)
         }
     }
 })
