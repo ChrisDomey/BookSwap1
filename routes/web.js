@@ -114,10 +114,19 @@ router.get('/userbooks/:username', authenticationMiddleware(), function (req, re
             var userBooks = user.related('myBooks');
             userBooks.fetch({ withRelated: ['book'] })
                 .then(userBooks => {
-                    res.render('mybooks', {title: "My books", data: userBooks.toJSON() })
+                    res.render('mybooks', { title: "My books", data: userBooks.toJSON() })
                 }
                 )
         })
+})
+
+router.post('/userbooks/:username', authenticationMiddleware(), (req, res) => {
+    if (req.body.type=='sell') {
+        UserBook.sell(req.body.userbookID).then(res.redirect('/userbooks/' + req.user.username))
+    }
+    else if (req.body.type='swap') {
+        UserBook.swap(req.body.userbookID).then(res.redirect('/userbooks/' + req.user.username))
+    }
 })
 
 router.get('/mywishlist', authenticationMiddleware(), function (req, res) {
@@ -128,7 +137,7 @@ router.get('/mywishlist', authenticationMiddleware(), function (req, res) {
             var userWishlist = user.related('myWishlist');
             userWishlist.fetch({ withRelated: ['book'] })
                 .then(userWishlist => {
-                    res.render('mywishlist', {title: "My wishlist", data: userWishlist.toJSON() })
+                    res.render('mywishlist', { title: "My wishlist", data: userWishlist.toJSON() })
                 }
                 )
         })
@@ -169,7 +178,7 @@ router.get('/viewresults/:ISBN', authenticationMiddleware(), function (req, res)
             var userBooks = book.related('userBooks');
             userBooks.fetch({ withRelated: ['user'] })
                 .then(userBooks => {
-                    res.render('viewresults', {title: "view results", book: book.toJSON() })
+                    res.render('viewresults', { title: "view results", book: book.toJSON() })
                 }
                 )
         })
@@ -180,7 +189,7 @@ router.get('/searchresults', function (req, res, next) {
         const searchIfISBN = req.query.search.replace(/-/g, "");
         if (/^\d+$/.test(searchIfISBN)) {
             Book.byISBN(req.query.search).then(book => {
-                res.render('searchresults', {search: req.query.search, books: book.toJSON() })
+                res.render('searchresults', { search: req.query.search, books: book.toJSON() })
             })
         }
         else {
@@ -195,10 +204,10 @@ router.get('/searchresults', function (req, res, next) {
         const course = req.query.course
         University.search(university, department, course).then(universities => {
             const univ = universities.toJSON()
-            var books={}
-            for (var i = 0; i < univ.length; i++){
-                book=univ[i].book
-                books[i]=book
+            var books = {}
+            for (var i = 0; i < univ.length; i++) {
+                book = univ[i].book
+                books[i] = book
             }
             res.render('searchresults', {
                 university: req.query.university,
@@ -210,7 +219,7 @@ router.get('/searchresults', function (req, res, next) {
 })
 
 router.post('/searchresults', function (req, res) {
-    UserWishlist.create({username:req.user.username,ISBN:req.body.Wishlist}).then(body=>{
+    UserWishlist.create({ username: req.user.username, ISBN: req.body.Wishlist }).then(body => {
         res.redirect('mywishlist')
     })
 })

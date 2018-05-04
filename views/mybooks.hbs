@@ -1,67 +1,78 @@
 <body class="bookswap-body-white">
 
     <style>
-            body {font-family: Arial, Helvetica, sans-serif;}
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-            /* The Modal (background) */
-            .modal {
-                display: none; /* Hidden by default */
-                position: fixed; /* Stay in place */
-                z-index: 1; /* Sit on top */
-                padding-top: 100px; /* Location of the box */
-                left: 0;
-                top: 0;
-                width: 100%; /* Full width */
-                height: 100%; /* Full height */
-                overflow: auto; /* Enable scroll if needed */
-                background-color: rgb(0,0,0); /* Fallback color */
-                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            }
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
 
-            /* Modal Content */
-            .modal-content {
-                background-color: #fefefe;
-                margin: auto;
-                padding: 35px;
-                border: 1px solid #888;
-                width: 550px;
-                /*text-align: center;*/
-                align-items: center;
-            }
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 35px;
+            border: 1px solid #888;
+            width: 550px;
+            /*text-align: center;*/
+            align-items: center;
+        }
 
-            .modal-type-name {
-                color: #1B4A97 !important;
-                font-size: 22px;
-                text-transform: uppercase;
-                margin-bottom: 20px;
-            }
+        .modal-type-name {
+            color: #1B4A97 !important;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
 
-            .modal-book-title {
-                font-size: 24px;
-                color: #767676 !important;
-            }
+        .modal-book-title {
+            font-size: 24px;
+            color: #767676 !important;
+        }
 
-            /* The Close Button */
-            .modal-close-btn {
-                display: inline-block;
-                color: #aaaaaa;
-                float: right;
-                font-size: 28px;
-                font-weight: bold;
+        /* The Close Button */
+        .modal-close-btn {
+            display: inline-block;
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
 
-                position: absolute;
-                right: 15px;
-                top: 8px;
+            position: absolute;
+            right: 15px;
+            top: 8px;
 
-                cursor: pointer;
-            }
+            cursor: pointer;
+        }
 
-            .modal-close-btn:hover,
-            .modal-close-btn:focus {
-                color: #000;
-                text-decoration: none;
-                cursor: pointer;
-            }
+        .modal-close-btn:hover,
+        .modal-close-btn:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 
 
@@ -75,17 +86,25 @@
             <div class="book-block">
                 <div id="myModal" class="modal">
                     <div class="modal-content">
-                        <div class="modal-close-wrapper"><span class="modal-close-btn">&times;</span></div>
-                        
+                        <div class="modal-close-wrapper">
+                            <span class="modal-close-btn">&times;</span>
+                        </div>
+
                         <p class="modal-type-name">$ Sold This Book</p>
-                        
+
                         <span class="modal-book-title">{{this.book.title}}</span>
-                        <p class="mb-30">By<span class="wishlist-details-value"> {{this.book.author}}</span></p>
-                        
+                        <p class="mb-30">By
+                            <span class="wishlist-details-value"> {{this.book.author}}</span>
+                        </p>
+
                         <span style="margin-bottom: 5px;">Comments (optional)</span>
                         <textarea rows="4" cols="55" placeholder="Let Us Know Anything!" class="mb-20"></textarea>
 
-                        <button class="btn btn-primary modal-btn" style="min-width: 70px; border-radius: 15px; background: #1B4A97 !important; border: 1px solid #1B4A97 !important; text-transform: uppercase;">Sold</button>
+                        <form method="POST">
+                            <button class="btn btn-primary modal-btn" style="min-width: 70px; border-radius: 15px; background: #1B4A97 !important; border: 1px solid #1B4A97 !important; text-transform: uppercase;"
+                                name='userbookID' value='{{this.userbookID}}'>Sold</button>
+                            <input type="hidden" name='type' value="sell">
+                        </form>
                     </div>
                 </div>
 
@@ -98,20 +117,38 @@
 
                     <div class="mybooks-detail">
                         <h2 class="mybooks-detail-title">{{this.book.title}}</h2>
-                        <h5 class="mybooks-detail-name">By <span class="mybooks-detail-value">{{this.book.author}}</span></h5>
+                        <h5 class="mybooks-detail-name">By
+                            <span class="mybooks-detail-value">{{this.book.author}}</span>
+                        </h5>
 
                         <div class="mybooks-detail-left pt-10">
-                            <h5 class="mybooks-detail-name">Published <span class="mybooks-detail-value">by {{this.book.publisher}}</span></h5>
-                            <h5 class="mybooks-detail-name">ISBN: <span class="mybooks-detail-value">{{this.ISBN}}</span></h5>
-                            <h5 class="mybooks-detail-name">Edition: <span class="mybooks-detail-value">{{this.book.edition}}</span></h5>
-                            <h5 class="mybooks-detail-name">Uploaded: <span class="mybooks-detail-value">{{dateConverter this.dateUploaded}}</span></h5>
+                            <h5 class="mybooks-detail-name">Published
+                                <span class="mybooks-detail-value">by {{this.book.publisher}}</span>
+                            </h5>
+                            <h5 class="mybooks-detail-name">ISBN:
+                                <span class="mybooks-detail-value">{{this.ISBN}}</span>
+                            </h5>
+                            <h5 class="mybooks-detail-name">Edition:
+                                <span class="mybooks-detail-value">{{this.book.edition}}</span>
+                            </h5>
+                            <h5 class="mybooks-detail-name">Uploaded:
+                                <span class="mybooks-detail-value">{{dateConverter this.dateUploaded}}</span>
+                            </h5>
                         </div>
 
                         <div class="mybooks-detail-right pt-10">
-                            <h5 class="mybooks-detail-name">Condition: <span class="mybooks-detail-value">{{this.condition}}</span></h5>
-                            <h5 class="mybooks-detail-name">Binding: <span class="mybooks-detail-value">{{this.book.binding}}</span></h5>
-                            <h5 class="mybooks-detail-name">Status: <span class="mybooks-detail-value">{{this.status}}</span></h5>
-                            <h5 class="mybooks-detail-name">Type: <span class="mybooks-detail-value">{{this.transaction}}</span></h5>
+                            <h5 class="mybooks-detail-name">Condition:
+                                <span class="mybooks-detail-value">{{this.condition}}</span>
+                            </h5>
+                            <h5 class="mybooks-detail-name">Binding:
+                                <span class="mybooks-detail-value">{{this.book.binding}}</span>
+                            </h5>
+                            <h5 class="mybooks-detail-name">Status:
+                                <span class="mybooks-detail-value">{{this.status}}</span>
+                            </h5>
+                            <h5 class="mybooks-detail-name">Type:
+                                <span class="mybooks-detail-value">{{this.transaction}}</span>
+                            </h5>
                         </div>
 
                     </div>
@@ -120,9 +157,9 @@
                         <h5 class="mybooks-color1">Posted 9.13.17</h5>
                         <button type="submit" class="btn btn-lg sold-book-button soldBookBtn mybooks-button-size" id="round">$ SOLD THIS BOOK</button>
                         <button type="submit" class="btn btn-lg sold-book-button swappedBookBtn mybooks-button-size" id="round">SWAPPED THIS BOOK</button>
-                        
+
                     </div>
-                    
+
                 </div>
             </div>
             {{/each}}
@@ -143,12 +180,14 @@
             $(soldBookBtn).click(function(e) {
                 $(this).closest('.book-block').find('.modal-type-name').text('Sold This Book');
                 $(this).closest('.book-block').find(modalBtn).text('Sold');
+                $("input[name='type']").val("sell");
                 $(this).closest('.book-block').find('#myModal').css('display', 'block');
             });
 
             $(swappedBookBtn).click(function(e) {
                 $(this).closest('.book-block').find('.modal-type-name').text('Swapped This Book');
                 $(this).closest('.book-block').find(modalBtn).text('Swapped');
+                $("input[name='type']").val("swap");
                 $(this).closest('.book-block').find('#myModal').css('display', 'block');
             });
 
