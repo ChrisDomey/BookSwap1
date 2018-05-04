@@ -13,7 +13,10 @@ const UserWishlist = bookshelf.Model.extend({
     {
         create: function (data) {
             return this.forge(data).save()
-        }
+        },
+        remove: function (id) {
+            return this.where({ wishlistID: id }).destroy()
+        },
     }
 )
 

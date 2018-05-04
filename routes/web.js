@@ -139,6 +139,14 @@ router.get('/mywishlist', authenticationMiddleware(), function (req, res) {
         })
 })
 
+router.post('/mywishlist', authenticationMiddleware(),(req,res)=>{
+    if(req.body.wishlistID){
+        UserWishlist.remove(req.body.wishlistID).then(
+            res.redirect('mywishlist')
+        )
+    }
+})
+
 router.get('/postbook', authenticationMiddleware(), function (req, res) {
     if (req.query.ISBNbook) {
         Book.byISBN(req.query.ISBNbook).then(book => {

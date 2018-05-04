@@ -31,8 +31,9 @@
 					<form action="/viewresults/{{this.ISBN}}">
 						<button type="submit" class="btn btn-lg blue-btn viewresults-button-size" id="round">VIEW RESULTS > </button>
 					</form>
-					<form class="wishlist-delete-wrapper">
+					<form class="wishlist-delete-wrapper" method="POST">
 						<button type="submit" class="btn btn-lg wishlist-delete-entry">X</button>
+						<input type="hidden"  value='{{this.wishlistID}}' name='wishlistID' >
 					</form>
 				</div>
 	        </div>
