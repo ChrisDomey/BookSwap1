@@ -42,7 +42,6 @@ function validate(req) {
 router.post('/register', function (req, res) {
     const errors = validate(req);
     if (errors) {
-        console.log(JSON.stringify(errors))
         res.render('register', { title: "Registration", errors: errors })
     }
     else {
@@ -54,20 +53,20 @@ router.post('/register', function (req, res) {
         const emailDomain = email.split("@")[1]
         University.byEmailDomain(emailDomain).then(university => {
             const universityID = university.get('universityID')
-            new User({ 'username': username }).fetch().then(user => { console.log(user.get('username')), res.render('register', { title: "Registration", dbError: "Username already Exists" }) })
+            new User({ 'username': username }).fetch().then(user => { res.render('register', { title: "Registration", dbError: "Username already Exists" }) })
                 .catch(err => {
-                    new User({ 'email': email }).fetch().then(user => { console.log(user.get('email')), res.render('register', { title: "Registration", dbError: "email already registered" }) })
+                    new User({ 'email': email }).fetch().then(user => { res.render('register', { title: "Registration", dbError: "email already registered" }) })
                         .catch(erro => {
                             bcrypt.hash(plainTextPassword, saltRounds, function (err, hash) {
                                 User.create({
                                     username: username, firstName: firstName, lastName: lastName
                                     , email: email, password: hash, universityID: universityID
                                 }).then(user => { req.login(user, err => { res.redirect('/') }) })
-                                    .catch(error => { console.log("Failed " + error), res.render('register', { title: "Registration", dbError: "Database Error" }) })
+                                    .catch(error => { res.render('register', { title: "Registration", dbError: "Database Error" }) })
                             })
                         })
                 })
-        }).catch(error => { console.log("Failed " + error), res.render('register', { title: "Registration", dbError: "Your university is not licensed with us" }) })
+        }).catch(error => { res.render('register', { title: "Registration", dbError: "Your university is not licensed with us" }) })
     }
 })
 
@@ -81,8 +80,6 @@ passport.deserializeUser(function (user, done) {
 
 function authenticationMiddleware() {
     return (req, res, next) => {
-        console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
-
         if (req.isAuthenticated()) return next();
         res.redirect('/login')
     }
@@ -121,17 +118,16 @@ router.get('/userbooks/:username', authenticationMiddleware(), function (req, re
 })
 
 router.post('/userbooks/:username', authenticationMiddleware(), (req, res) => {
-    if (req.body.type=='sell') {
+    if (req.body.type == 'sell') {
         UserBook.sell(req.body.userbookID).then(res.redirect('/userbooks/' + req.user.username))
     }
-    else if (req.body.type='swap') {
+    else if (req.body.type = 'swap') {
         UserBook.swap(req.body.userbookID).then(res.redirect('/userbooks/' + req.user.username))
     }
 })
 
 router.get('/mywishlist', authenticationMiddleware(), function (req, res) {
     const username = req.user.username
-    console.log(username)
     User.forge({ username: username }).fetch({ withRelated: ['myWishlist'] })
         .then(user => {
             var userWishlist = user.related('myWishlist');
@@ -166,7 +162,6 @@ router.post('/postbook', authenticationMiddleware(), function (req, res) {
         flag: "current",
         status: "available"
     }
-    console.log(data)
     UserBook.create(data).then(book => {
         res.redirect('/userbooks/' + req.user.username)
     })
