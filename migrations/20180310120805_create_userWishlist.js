@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
         t.foreign('username').references('user.username');
         t.string('ISBN').notNull();
         t.foreign('ISBN').references('book.ISBN');
+        t.unique(['username', 'ISBN']);
     });
 };
 
