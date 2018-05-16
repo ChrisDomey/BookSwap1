@@ -1,7 +1,7 @@
 
 exports.up = function(knex, Promise) {
     return knex.schema.createTable('userBook', function(t) {
-        t.increments('userbookID').unsigned().primary();
+        t.increments('userbookID').primary();
         t.string('username').notNull();
         t.foreign('username').references('user.username');
         t.string('ISBN').notNull();
@@ -10,6 +10,7 @@ exports.up = function(knex, Promise) {
         t.string('condition').notNull();
         t.string('pictures').notNull();
         t.date('availableDate').notNull();
+        t.string('comments')
         t.enum('transaction',['both','sell','swap']);
         t.enum('flag',['current','expired']);
         t.enum('status',['available','sold','swapped']);

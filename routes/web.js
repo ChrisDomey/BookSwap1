@@ -53,9 +53,9 @@ router.post('/register', function (req, res) {
         const emailDomain = email.split("@")[1]
         University.byEmailDomain(emailDomain).then(university => {
             const universityID = university.get('universityID')
-            new User({ 'username': username }).fetch().then(user => { res.render('register', { title: "Registration", dbError: "Username already Exists" }) })
+            new User({ 'username': username }).fetch().then((user)=> {console.log(user.toJSON()),res.render('register', { title: "Registration", dbError: "Username already Exists" }) })
                 .catch(err => {
-                    new User({ 'email': email }).fetch().then(user => { res.render('register', { title: "Registration", dbError: "email already registered" }) })
+                    new User({ 'email': email }).fetch().then((user) => { console.log(user.toJSON()),res.render('register', { title: "Registration", dbError: "email already registered" }) })
                         .catch(erro => {
                             bcrypt.hash(plainTextPassword, saltRounds, function (err, hash) {
                                 User.create({
@@ -119,10 +119,10 @@ router.get('/userbooks/:username', authenticationMiddleware(), function (req, re
 
 router.post('/userbooks/:username', authenticationMiddleware(), (req, res) => {
     if (req.body.type == 'sell') {
-        UserBook.sell(req.body.userbookID).then(res.redirect('/userbooks/' + req.user.username))
+        UserBook.sell(req.body.userbookID,req.body.comments).then(res.redirect('/userbooks/' + req.user.username))
     }
     else if (req.body.type = 'swap') {
-        UserBook.swap(req.body.userbookID).then(res.redirect('/userbooks/' + req.user.username))
+        UserBook.swap(req.body.userbookID,req.body.comments).then(res.redirect('/userbooks/' + req.user.username))
     }
 })
 

@@ -14,8 +14,8 @@ const UserBook = bookshelf.Model.extend({
         create: function (data) {
             return this.forge(data).save()
         },
-        sell : function(id){
-            return this.where({userbookID:id}).save({status:'sold'},{method:'update',patch:'true'})
+        sell : function(id,comments){
+            return this.where({userbookID:id}).save({status:'sold',comments:comments},{method:'update',patch:'true'})
         },
         swap: function(id){
             return this.where({userbookID:id}).save({status:'swapped'},{method:'update',patch:'true'})

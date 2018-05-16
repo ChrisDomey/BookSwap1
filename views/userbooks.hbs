@@ -6,6 +6,7 @@
         }
 
         /* The Modal (background) */
+
         .modal {
             display: none;
             /* Hidden by default */
@@ -30,6 +31,7 @@
         }
 
         /* Modal Content */
+
         .modal-content {
             background-color: #fefefe;
             margin: auto;
@@ -53,6 +55,7 @@
         }
 
         /* The Close Button */
+
         .modal-close-btn {
             display: inline-block;
             color: #aaaaaa;
@@ -92,15 +95,15 @@
 
                         <p class="modal-type-name">$ Sold This Book</p>
 
-                        <span class="modal-book-title">{{this.book.title}}</span>
-                        <p class="mb-30">By
-                            <span class="wishlist-details-value"> {{this.book.author}}</span>
-                        </p>
-
-                        <span style="margin-bottom: 5px;">Comments (optional)</span>
-                        <textarea rows="4" cols="55" placeholder="Let Us Know Anything!" class="mb-20"></textarea>
-
                         <form method="POST">
+                            <span class="modal-book-title">{{this.book.title}}</span>
+                            <p class="mb-30">By
+                                <span class="wishlist-details-value"> {{this.book.author}}</span>
+                            </p>
+
+                            <span style="margin-bottom: 5px;">Comments (optional)</span>
+                            <textarea rows="4" cols="55" placeholder="Let Us Know Anything!" name='comments' class="mb-20"></textarea>
+
                             <button class="btn btn-primary modal-btn" style="min-width: 70px; border-radius: 15px; background: #1B4A97 !important; border: 1px solid #1B4A97 !important; text-transform: uppercase;"
                                 name='userbookID' value='{{this.userbookID}}'>Sold</button>
                             <input type="hidden" name='type' value="sell">
@@ -170,7 +173,7 @@
 
     <script type="text/javascript">
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             var modal = document.getElementById('myModal');
             var soldBookBtn = document.getElementsByClassName('soldBookBtn');
             var swappedBookBtn = document.getElementsByClassName('swappedBookBtn');
@@ -178,14 +181,14 @@
             var modalBtn = document.getElementsByClassName('modal-btn');
 
 
-            $(soldBookBtn).click(function(e) {
+            $(soldBookBtn).click(function (e) {
                 $(this).closest('.book-block').find('.modal-type-name').text('Sold This Book');
                 $(this).closest('.book-block').find(modalBtn).text('Sold');
                 $("input[name='type']").val("sell");
                 $(this).closest('.book-block').find('#myModal').css('display', 'block');
             });
 
-            $(swappedBookBtn).click(function(e) {
+            $(swappedBookBtn).click(function (e) {
                 $(this).closest('.book-block').find('.modal-type-name').text('Swapped This Book');
                 $(this).closest('.book-block').find(modalBtn).text('Swapped');
                 $("input[name='type']").val("swap");
@@ -193,11 +196,11 @@
             });
 
 
-            $(closeModalBtn).click(function() {
+            $(closeModalBtn).click(function () {
                 $(this).closest('#myModal').css('display', 'none');
             });
 
-            window.onclick = function(event) {
+            window.onclick = function (event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }
